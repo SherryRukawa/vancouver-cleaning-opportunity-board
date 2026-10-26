@@ -145,6 +145,17 @@
     border:1.5px dashed var(--border);border-radius:12px;padding:26px;text-align:center;color:var(--muted);
   }
 
+
+  /* Language toggle + daily-alerts notice (top bar) */
+  .topbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:0 0 14px}
+  .lang-toggle{display:flex;gap:6px;align-items:center}
+  .lang-label{font-size:.8rem;font-weight:700;letter-spacing:.06em;color:var(--muted);margin-right:2px}
+  .lang-btn{appearance:none;border:1px solid var(--border);background:var(--surface);color:var(--ink);font:inherit;font-size:.9rem;font-weight:700;padding:7px 14px;border-radius:999px;cursor:pointer}
+  .lang-btn:hover{border-color:var(--accent)}
+  .lang-btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+  .lang-btn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+  .alerts-note{font-size:.85rem;font-weight:700;color:var(--accent);border:1.5px solid var(--accent);border-radius:999px;padding:6px 12px;text-align:center}
+  @media (max-width:560px){ .alerts-note{font-size:.82rem} }
   footer{margin-top:36px;border-top:1px solid var(--border);padding-top:18px;color:var(--muted);font-size:.9rem}
   footer p{margin:0 0 8px}
   @media (prefers-reduced-motion: no-preference){
@@ -157,29 +168,40 @@
 <body>
 <div class="wrap">
 
+  <div class="topbar">
+    <div class="lang-toggle" role="group" aria-label="Language / 语言">
+      <span class="lang-label">Language</span>
+      <button type="button" class="lang-btn" id="langEn" aria-pressed="true">English</button>
+      <button type="button" class="lang-btn" id="langZh" aria-pressed="false">中文</button>
+    </div>
+    <span class="alerts-note" id="alertsNote" data-en="Daily alerts — coming soon" data-zh="每日提醒 — 即将推出">Daily alerts — coming soon</span>
+  </div>
+
   <header>
-    <p class="kicker">Vancouver &amp; Lower Mainland · Cleaning businesses only</p>
-    <h1>Vancouver Cleaning Opportunity Board</h1>
-    <p class="lede"><strong>Opportunities for cleaning businesses — not a job board for employees.</strong> Every listing below is a real post found on Facebook groups or Craigslist: a client asking for cleaning, a company looking for a subcontractor, or cleaning contracts offered for sale.</p>
-    <p class="sub">Vancouver area only. No employment ads hiring individual cleaners, no companies advertising their own services, and no Canada-wide tender lists. Each card links straight to the original post so you can reply to the poster directly. Listings are newest first; posts over 2 weeks old are marked as possibly stale.</p>
+    <p class="kicker" data-en="Vancouver &amp; Lower Mainland · Cleaning businesses only" data-zh="温哥华及低陆平原 · 仅面向清洁企业">Vancouver &amp; Lower Mainland · Cleaning businesses only</p>
+    <h1 data-en="Vancouver Cleaning Opportunity Board" data-zh="温哥华清洁商机板">Vancouver Cleaning Opportunity Board</h1>
+    <p class="lede" data-en-html="<strong>Opportunities for cleaning businesses — not a job board for employees.</strong> Every listing below is a real post found on Facebook groups or Craigslist: a client asking for cleaning, a company looking for a subcontractor, or cleaning contracts offered for sale." data-zh-html="<strong>面向清洁企业的商机——不是招工板。</strong>下面每条信息都来自 Facebook 群组或 Craigslist 上的真实帖子：客户找清洁服务、公司找分包商，或出售中的清洁合同。"><strong>Opportunities for cleaning businesses — not a job board for employees.</strong> Every listing below is a real post found on Facebook groups or Craigslist: a client asking for cleaning, a company looking for a subcontractor, or cleaning contracts offered for sale.</p>
+    <p class="sub" data-en-html="Vancouver area only. No employment ads hiring individual cleaners, no companies advertising their own services, and no Canada-wide tender lists. Each card links straight to the original post so you can reply to the poster directly. Listings are newest first; posts over 2 weeks old are marked as possibly stale." data-zh-html="仅限温哥华地区。不含招聘个人清洁工的广告、不含公司自我宣传、不含全加拿大招标清单。每张卡片都直接链接到原始帖子，方便你直接回复发帖人。按最新发布排序；超过 2 周的帖子会标注为可能已过期。">Vancouver area only. No employment ads hiring individual cleaners, no companies advertising their own services, and no Canada-wide tender lists. Each card links straight to the original post so you can reply to the poster directly. Listings are newest first; posts over 2 weeks old are marked as possibly stale.</p>
     <div class="scope-row" aria-label="Board scope">
-      <span class="scope">📍 Vancouver / Lower Mainland only</span>
-      <span class="scope">🏢 For businesses &amp; subcontractors</span>
-      <span class="scope">🔗 Every card links to the original post</span>
+      <span class="scope" data-en="📍 Vancouver / Lower Mainland only" data-zh="📍 仅限温哥华 / 低陆平原">📍 Vancouver / Lower Mainland only</span>
+      <span class="scope" data-en="🏢 For businesses &amp; subcontractors" data-zh="🏢 面向企业与分包商">🏢 For businesses &amp; subcontractors</span>
+      <span class="scope" data-en="🔗 Every card links to the original post" data-zh="🔗 每张卡片链接到原始帖子">🔗 Every card links to the original post</span>
     </div>
   </header>
 
-  <div class="notice" role="note">
+  <div class="notice" role="note" data-en-html="
+    <strong>Board refreshed October 26, 2026.</strong> New listings are added daily; posts over 2 weeks old are marked as possibly stale. Listings may have been filled, taken down, or changed since posting — open the original post to confirm it is still available before you spend time on it.
+  " data-zh-html="<strong>公告板已于 2026年10月26日更新。</strong>每天新增信息；超过 2 周的帖子会标注为可能已过期。信息可能已被接单、下架或更改——花时间之前请先打开原始帖子确认是否仍然有效。">
     <strong>Board refreshed October 26, 2026.</strong> New listings are added daily; posts over 2 weeks old are marked as possibly stale. Listings may have been filled, taken down, or changed since posting — open the original post to confirm it is still available before you spend time on it.
   </div>
 
   <section class="filters" aria-label="Filter opportunities by type">
-    <p class="filters-label">Filter by type</p>
+    <p class="filters-label" data-en="Filter by type" data-zh="按类型筛选">Filter by type</p>
     <div class="filter-row" role="group" aria-label="Opportunity type filters">
-      <button type="button" class="filter-btn" data-filter="all" aria-pressed="true">All opportunities (23)</button>
-      <button type="button" class="filter-btn" data-filter="client" aria-pressed="false">Client request (12)</button>
-      <button type="button" class="filter-btn" data-filter="subcontracting" aria-pressed="false">Subcontracting (9)</button>
-      <button type="button" class="filter-btn" data-filter="business" aria-pressed="false">Business opportunity (2)</button>
+      <button type="button" class="filter-btn" data-filter="all" aria-pressed="true" data-en="All opportunities (23)" data-zh="全部商机 (23)">All opportunities (23)</button>
+      <button type="button" class="filter-btn" data-filter="client" aria-pressed="false" data-en="Client request (12)" data-zh="客户需求 (12)">Client request (12)</button>
+      <button type="button" class="filter-btn" data-filter="subcontracting" aria-pressed="false" data-en="Subcontracting (9)" data-zh="分包合作 (9)">Subcontracting (9)</button>
+      <button type="button" class="filter-btn" data-filter="business" aria-pressed="false" data-en="Business opportunity (2)" data-zh="商业机会 (2)">Business opportunity (2)</button>
     </div>
     <p class="count-line" id="countLine" aria-live="polite">Showing 23 of 23 opportunities</p>
   </section>
@@ -189,464 +211,464 @@
     <!-- 1: October 24 -->
     <article class="card" data-category="client">
       <div class="card-top">
-        <span class="type-badge client">Client request</span>
-        <span class="posted">Posted October 24, 2026</span>
+        <span class="type-badge client" data-en="Client request" data-zh="客户需求">Client request</span>
+        <span class="posted" data-en="Posted October 24, 2026" data-zh="发布于 2026年10月24日">Posted October 24, 2026</span>
       </div>
-      <h2>Carpet cleaner wanted — 1-bedroom apartment, max $100</h2>
-      <p class="desc">Looking for a carpet cleaner for a 1-bedroom small apartment, maximum $100.</p>
+      <h2 data-en="Carpet cleaner wanted — 1-bedroom apartment, max $100" data-zh="招地毯清洁工——一居室公寓，最高 $100">Carpet cleaner wanted — 1-bedroom apartment, max $100</h2>
+      <p class="desc" data-en="Looking for a carpet cleaner for a 1-bedroom small apartment, maximum $100." data-zh="为一居室小公寓找地毯清洁工，预算最高 $100。">Looking for a carpet cleaner for a 1-bedroom small apartment, maximum $100.</p>
       <dl class="meta">
-        <div><dt>Area</dt><dd>Vancouver area (area not specified in post)</dd></div>
-        <div><dt>Posted</dt><dd>October 24, 2026</dd></div>
-        <div><dt>Type</dt><dd>Client request</dd></div>
-        <div><dt>Source</dt><dd>Facebook group “Cleaning Services Vancouver &amp; Suburbs”</dd></div>
+        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Vancouver area (area not specified in post)" data-zh="温哥华地区（帖子未注明具体区域） (Vancouver area)">Vancouver area (area not specified in post)</dd></div>
+        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="October 24, 2026" data-zh="2026年10月24日">October 24, 2026</dd></div>
+        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Client request" data-zh="客户需求">Client request</dd></div>
+        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Cleaning Services Vancouver &amp; Suburbs”" data-zh="Facebook 群组 “Cleaning Services Vancouver &amp; Suburbs”">Facebook group “Cleaning Services Vancouver &amp; Suburbs”</dd></div>
       </dl>
       <div class="links">
-        <a class="view-btn" href="https://facebook.com/groups/2091059191236785/permalink/3004430249899670/" target="_blank" rel="noopener">View original post ↗</a>
+        <a class="view-btn" href="https://facebook.com/groups/2091059191236785/permalink/3004430249899670/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
     </article>
 
     <!-- 2: October 23 -->
     <article class="card" data-category="subcontracting">
       <div class="card-top">
-        <span class="type-badge">Subcontracting opportunity</span>
-        <span class="posted">Posted October 23, 2026</span>
+        <span class="type-badge" data-en="Subcontracting opportunity" data-zh="分包合作机会">Subcontracting opportunity</span>
+        <span class="posted" data-en="Posted October 23, 2026" data-zh="发布于 2026年10月23日">Posted October 23, 2026</span>
       </div>
-      <h2>Cleaning subcontractors wanted for residential jobs</h2>
-      <p class="desc">Property care firm looking for reliable, experienced cleaning subcontractors for residential jobs. Flexible opportunities — accept jobs as you are available. Posted by Zenviva Property Care Inc.</p>
+      <h2 data-en="Cleaning subcontractors wanted for residential jobs" data-zh="住宅清洁分包商招募">Cleaning subcontractors wanted for residential jobs</h2>
+      <p class="desc" data-en="Property care firm looking for reliable, experienced cleaning subcontractors for residential jobs. Flexible opportunities — accept jobs as you are available. Posted by Zenviva Property Care Inc." data-zh="物业管理公司招募可靠、有经验的住宅清洁分包商，时间灵活——有空时接单即可。发帖方：Zenviva Property Care Inc.">Property care firm looking for reliable, experienced cleaning subcontractors for residential jobs. Flexible opportunities — accept jobs as you are available. Posted by Zenviva Property Care Inc.</p>
       <dl class="meta">
-        <div><dt>Area</dt><dd>Tri-Cities (Coquitlam, Port Coquitlam, Port Moody), BC</dd></div>
-        <div><dt>Posted</dt><dd>October 23, 2026</dd></div>
-        <div><dt>Type</dt><dd>Subcontracting opportunity</dd></div>
-        <div><dt>Source</dt><dd>Facebook group “Cleaning Services in Vancouver, FraserValley” — Zenviva Property Care Inc.</dd></div>
+        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Tri-Cities (Coquitlam, Port Coquitlam, Port Moody), BC" data-zh="三联市（高贵林、高贵林港、穆迪港），BC (Tri-Cities (Coquitlam, Port Coquitlam, Port Moody), BC)">Tri-Cities (Coquitlam, Port Coquitlam, Port Moody), BC</dd></div>
+        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="October 23, 2026" data-zh="2026年10月23日">October 23, 2026</dd></div>
+        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Subcontracting opportunity" data-zh="分包合作机会">Subcontracting opportunity</dd></div>
+        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Cleaning Services in Vancouver, FraserValley” — Zenviva Property Care Inc." data-zh="Facebook 群组 “Cleaning Services in Vancouver, FraserValley” — Zenviva Property Care Inc.">Facebook group “Cleaning Services in Vancouver, FraserValley” — Zenviva Property Care Inc.</dd></div>
       </dl>
       <div class="links">
-        <a class="view-btn" href="https://facebook.com/groups/309371081333175/permalink/1445811801022425/" target="_blank" rel="noopener">View original post ↗</a>
+        <a class="view-btn" href="https://facebook.com/groups/309371081333175/permalink/1445811801022425/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
     </article>
 
     <!-- 3: October 23 -->
     <article class="card" data-category="client">
       <div class="card-top">
-        <span class="type-badge client">Client request</span>
-        <span class="posted">Posted October 23, 2026</span>
+        <span class="type-badge client" data-en="Client request" data-zh="客户需求">Client request</span>
+        <span class="posted" data-en="Posted October 23, 2026" data-zh="发布于 2026年10月23日">Posted October 23, 2026</span>
       </div>
-      <h2>Professional cleaner needed - 2-bedroom apartment, twice a week</h2>
-      <p class="desc">Individual client in North Vancouver looking for an experienced cleaner for a 2-bedroom apartment twice a week. Duties are vacuuming, mopping, and cleaning bathrooms. Shifts are 5 hours, supplies are provided by the client, and pay is $25 per hour cash paid the same day. Note: the first cleaning was listed as the day after the October 23 posting, so confirm the ongoing schedule in the original post.</p>
+      <h2 data-en="Professional cleaner needed - 2-bedroom apartment, twice a week" data-zh="招专业清洁工——两居室公寓，每周两次">Professional cleaner needed - 2-bedroom apartment, twice a week</h2>
+      <p class="desc" data-en="Individual client in North Vancouver looking for an experienced cleaner for a 2-bedroom apartment twice a week. Duties are vacuuming, mopping, and cleaning bathrooms. Shifts are 5 hours, supplies are provided by the client, and pay is $25 per hour cash paid the same day. Note: the first cleaning was listed as the day after the October 23 posting, so confirm the ongoing schedule in the original post." data-zh="北温哥华个人客户招有经验的清洁工，服务两居室公寓，每周两次。工作包括吸尘、拖地和清洁浴室；每次 5 小时，客户提供清洁用品，时薪 $25，现金当日结清。注意：首次清洁列在 10 月 23 日发帖后的第二天，请在原始帖子中确认后续排班。">Individual client in North Vancouver looking for an experienced cleaner for a 2-bedroom apartment twice a week. Duties are vacuuming, mopping, and cleaning bathrooms. Shifts are 5 hours, supplies are provided by the client, and pay is $25 per hour cash paid the same day. Note: the first cleaning was listed as the day after the October 23 posting, so confirm the ongoing schedule in the original post.</p>
       <dl class="meta">
-        <div><dt>Area</dt><dd>North Vancouver, BC</dd></div>
-        <div><dt>Posted</dt><dd>October 23, 2026</dd></div>
-        <div><dt>Type</dt><dd>Client request</dd></div>
-        <div><dt>Source</dt><dd>Craigslist Vancouver</dd></div>
+        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="North Vancouver, BC" data-zh="北温哥华，BC (North Vancouver, BC)">North Vancouver, BC</dd></div>
+        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="October 23, 2026" data-zh="2026年10月23日">October 23, 2026</dd></div>
+        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Client request" data-zh="客户需求">Client request</dd></div>
+        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Craigslist Vancouver" data-zh="Craigslist Vancouver">Craigslist Vancouver</dd></div>
       </dl>
       <div class="links">
-        <a class="view-btn" href="https://www.craigslist.org/view/d/north-vancouver-professional-cleaner/mpzC77ZQuM8qcEt9qQvqhf" target="_blank" rel="noopener">View original post ↗</a>
+        <a class="view-btn" href="https://www.craigslist.org/view/d/north-vancouver-professional-cleaner/mpzC77ZQuM8qcEt9qQvqhf" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
     </article>
 
     <!-- 4: October 22 -->
     <article class="card" data-category="subcontracting">
       <div class="card-top">
-        <span class="type-badge">Subcontracting opportunity</span>
-        <span class="posted">Posted October 22, 2026</span>
+        <span class="type-badge" data-en="Subcontracting opportunity" data-zh="分包合作机会">Subcontracting opportunity</span>
+        <span class="posted" data-en="Posted October 22, 2026" data-zh="发布于 2026年10月22日">Posted October 22, 2026</span>
       </div>
-      <h2>Cleaners wanted - Metro Vancouver, Surrey and Langley</h2>
-      <p class="desc">Harbourline Home Cleaning is offering residential cleaning jobs on a paid-per-job basis, with a set fee agreed before the cleaner accepts. Cleaners choose the jobs they want and bring their own supplies, equipment, and transportation. Note: the post does not use the words employee or subcontractor; this listing is included based on its per-job, choose-your-jobs model.</p>
+      <h2 data-en="Cleaners wanted - Metro Vancouver, Surrey and Langley" data-zh="招清洁工——大温哥华、素里和兰里">Cleaners wanted - Metro Vancouver, Surrey and Langley</h2>
+      <p class="desc" data-en="Harbourline Home Cleaning is offering residential cleaning jobs on a paid-per-job basis, with a set fee agreed before the cleaner accepts. Cleaners choose the jobs they want and bring their own supplies, equipment, and transportation. Note: the post does not use the words employee or subcontractor; this listing is included based on its per-job, choose-your-jobs model." data-zh="Harbourline Home Cleaning 按单结算提供住宅清洁工作，费用在接单前商定。清洁工自选工作，自带清洁用品、设备和交通工具。注意：帖子未使用“雇员”或“分包商”字眼；因其按单、自选工作的模式而收录。">Harbourline Home Cleaning is offering residential cleaning jobs on a paid-per-job basis, with a set fee agreed before the cleaner accepts. Cleaners choose the jobs they want and bring their own supplies, equipment, and transportation. Note: the post does not use the words employee or subcontractor; this listing is included based on its per-job, choose-your-jobs model.</p>
       <dl class="meta">
-        <div><dt>Area</dt><dd>Metro Vancouver, Surrey and Langley, BC</dd></div>
-        <div><dt>Posted</dt><dd>October 22, 2026</dd></div>
-        <div><dt>Type</dt><dd>Subcontracting opportunity</dd></div>
-        <div><dt>Source</dt><dd>Craigslist Vancouver - Harbourline Home Cleaning</dd></div>
+        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Metro Vancouver, Surrey and Langley, BC" data-zh="大温哥华、素里和兰里，BC (Metro Vancouver, Surrey and Langley, BC)">Metro Vancouver, Surrey and Langley, BC</dd></div>
+        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="October 22, 2026" data-zh="2026年10月22日">October 22, 2026</dd></div>
+        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Subcontracting opportunity" data-zh="分包合作机会">Subcontracting opportunity</dd></div>
+        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Craigslist Vancouver - Harbourline Home Cleaning" data-zh="Craigslist Vancouver — Harbourline Home Cleaning">Craigslist Vancouver - Harbourline Home Cleaning</dd></div>
       </dl>
       <div class="links">
-        <a class="view-btn" href="https://www.craigslist.org/view/d/surrey-outer-northwest-cleaners-wanted/uhSjAw1abHds3erogDuWh8" target="_blank" rel="noopener">View original post ↗</a>
+        <a class="view-btn" href="https://www.craigslist.org/view/d/surrey-outer-northwest-cleaners-wanted/uhSjAw1abHds3erogDuWh8" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
     </article>
 
     <!-- 5: October 21 -->
     <article class="card" data-category="subcontracting">
       <div class="card-top">
-        <span class="type-badge">Subcontracting opportunity</span>
-        <span class="posted">Posted October 21, 2026</span>
+        <span class="type-badge" data-en="Subcontracting opportunity" data-zh="分包合作机会">Subcontracting opportunity</span>
+        <span class="posted" data-en="Posted October 21, 2026" data-zh="发布于 2026年10月21日">Posted October 21, 2026</span>
       </div>
-      <h2>Cleaner wanted — apartment buildings in Richmond ($25/hr)</h2>
-      <p class="desc">Contractor position for common-area cleaning at two apartment buildings (14000 &amp; 14088 Riverport Way) in Richmond: 3.5 hours a day, 6 days a week, $25 per hour paid monthly. Requires own WorkSafeBC coverage and references. Verified live October 26, 2026.</p>
+      <h2 data-en="Cleaner wanted — apartment buildings in Richmond ($25/hr)" data-zh="招清洁工——列治文公寓楼（$25/小时）">Cleaner wanted — apartment buildings in Richmond ($25/hr)</h2>
+      <p class="desc" data-en="Contractor position for common-area cleaning at two apartment buildings (14000 &amp; 14088 Riverport Way) in Richmond: 3.5 hours a day, 6 days a week, $25 per hour paid monthly. Requires own WorkSafeBC coverage and references. Verified live October 26, 2026." data-zh="承包岗位，负责列治文两栋公寓楼（14000 及 14088 Riverport Way）的公共区域清洁：每天 3.5 小时，每周 6 天，时薪 $25，按月支付。需自备 WorkSafeBC 保险并提供推荐人。已于 2026年10月26日核实有效。">Contractor position for common-area cleaning at two apartment buildings (14000 &amp; 14088 Riverport Way) in Richmond: 3.5 hours a day, 6 days a week, $25 per hour paid monthly. Requires own WorkSafeBC coverage and references. Verified live October 26, 2026.</p>
       <dl class="meta">
-        <div><dt>Area</dt><dd>Richmond, BC</dd></div>
-        <div><dt>Posted</dt><dd>October 21, 2026</dd></div>
-        <div><dt>Type</dt><dd>Subcontracting opportunity</dd></div>
-        <div><dt>Source</dt><dd>Craigslist Vancouver</dd></div>
+        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Richmond, BC" data-zh="列治文，BC (Richmond, BC)">Richmond, BC</dd></div>
+        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="October 21, 2026" data-zh="2026年10月21日">October 21, 2026</dd></div>
+        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Subcontracting opportunity" data-zh="分包合作机会">Subcontracting opportunity</dd></div>
+        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Craigslist Vancouver" data-zh="Craigslist Vancouver">Craigslist Vancouver</dd></div>
       </dl>
       <div class="links">
-        <a class="view-btn" href="https://www.craigslist.org/view/d/richmond-cleaner-wanted-apartment/rtAFK5Sn8yPymq5tU5qc25" target="_blank" rel="noopener">View original post ↗</a>
+        <a class="view-btn" href="https://www.craigslist.org/view/d/richmond-cleaner-wanted-apartment/rtAFK5Sn8yPymq5tU5qc25" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
     </article>
 
     <!-- 6: October 18 -->
     <article class="card" data-category="subcontracting">
       <div class="card-top">
-        <span class="type-badge">Subcontracting opportunity</span>
-        <span class="posted">Posted October 18, 2026</span>
+        <span class="type-badge" data-en="Subcontracting opportunity" data-zh="分包合作机会">Subcontracting opportunity</span>
+        <span class="posted" data-en="Posted October 18, 2026" data-zh="发布于 2026年10月18日">Posted October 18, 2026</span>
       </div>
-      <h2>Independent cleaners wanted for Airbnb turnovers</h2>
-      <p class="desc">Nestoria Cleaning is looking for reliable, detail-oriented independent cleaners to handle Airbnb and short-term rental turnover cleanings in Vancouver. Contact them by direct message or at 778-907-6378 with your name, cleaning experience, availability, and preferred location.</p>
+      <h2 data-en="Independent cleaners wanted for Airbnb turnovers" data-zh="招独立清洁工——Airbnb 换房清洁">Independent cleaners wanted for Airbnb turnovers</h2>
+      <p class="desc" data-en="Nestoria Cleaning is looking for reliable, detail-oriented independent cleaners to handle Airbnb and short-term rental turnover cleanings in Vancouver. Contact them by direct message or at 778-907-6378 with your name, cleaning experience, availability, and preferred location." data-zh="Nestoria Cleaning 招募可靠、细心的独立清洁工，负责温哥华 Airbnb 及短租换房清洁。请私信联系，或致电 778-907-6378，并提供姓名、清洁经验、可工作时间和偏好区域。">Nestoria Cleaning is looking for reliable, detail-oriented independent cleaners to handle Airbnb and short-term rental turnover cleanings in Vancouver. Contact them by direct message or at 778-907-6378 with your name, cleaning experience, availability, and preferred location.</p>
       <dl class="meta">
-        <div><dt>Area</dt><dd>Vancouver, BC</dd></div>
-        <div><dt>Posted</dt><dd>October 18, 2026</dd></div>
-        <div><dt>Type</dt><dd>Subcontracting opportunity</dd></div>
-        <div><dt>Source</dt><dd>Facebook group “Professional House Cleaners in Vancouver” — Nestoria Cleaning</dd></div>
+        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Vancouver, BC" data-zh="温哥华，BC (Vancouver, BC)">Vancouver, BC</dd></div>
+        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="October 18, 2026" data-zh="2026年10月18日">October 18, 2026</dd></div>
+        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Subcontracting opportunity" data-zh="分包合作机会">Subcontracting opportunity</dd></div>
+        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Professional House Cleaners in Vancouver” — Nestoria Cleaning" data-zh="Facebook 群组 “Professional House Cleaners in Vancouver” — Nestoria Cleaning">Facebook group “Professional House Cleaners in Vancouver” — Nestoria Cleaning</dd></div>
       </dl>
       <div class="links">
-        <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1752538189148275/" target="_blank" rel="noopener">View original post ↗</a>
+        <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1752538189148275/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
     </article>
 
     <!-- 7: October 15 -->
     <article class="card" data-category="client">
       <div class="card-top">
-        <span class="type-badge client">Client request</span>
-        <span class="posted">Posted October 15, 2026</span>
+        <span class="type-badge client" data-en="Client request" data-zh="客户需求">Client request</span>
+        <span class="posted" data-en="Posted October 15, 2026" data-zh="发布于 2026年10月15日">Posted October 15, 2026</span>
       </div>
-      <h2>Monthly maintenance cleaning wanted — South Surrey home</h2>
-      <p class="desc">Home in South Surrey needs a monthly maintenance cleaning. Soil level is usually light, with occasional guests the house is cleaned for.</p>
+      <h2 data-en="Monthly maintenance cleaning wanted — South Surrey home" data-zh="招每月定期清洁——南素里住宅">Monthly maintenance cleaning wanted — South Surrey home</h2>
+      <p class="desc" data-en="Home in South Surrey needs a monthly maintenance cleaning. Soil level is usually light, with occasional guests the house is cleaned for." data-zh="南素里一处住宅需要每月一次定期清洁。平时污垢较轻，偶尔为接待客人而清洁。">Home in South Surrey needs a monthly maintenance cleaning. Soil level is usually light, with occasional guests the house is cleaned for.</p>
       <dl class="meta">
-        <div><dt>Area</dt><dd>South Surrey, BC</dd></div>
-        <div><dt>Posted</dt><dd>October 15, 2026</dd></div>
-        <div><dt>Type</dt><dd>Client request</dd></div>
-        <div><dt>Source</dt><dd>Facebook group “Cleaning Services in Vancouver, FraserValley”</dd></div>
+        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="South Surrey, BC" data-zh="南素里，BC (South Surrey, BC)">South Surrey, BC</dd></div>
+        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="October 15, 2026" data-zh="2026年10月15日">October 15, 2026</dd></div>
+        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Client request" data-zh="客户需求">Client request</dd></div>
+        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Cleaning Services in Vancouver, FraserValley”" data-zh="Facebook 群组 “Cleaning Services in Vancouver, FraserValley”">Facebook group “Cleaning Services in Vancouver, FraserValley”</dd></div>
       </dl>
       <div class="links">
-        <a class="view-btn" href="https://facebook.com/groups/309371081333175/permalink/1438610241742581/" target="_blank" rel="noopener">View original post ↗</a>
+        <a class="view-btn" href="https://facebook.com/groups/309371081333175/permalink/1438610241742581/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
     </article>
 
     <!-- 8: October 3 -->
     <article class="card" data-category="client">
       <div class="card-top">
-        <span class="type-badge client">Client request</span>
-        <span class="posted">Posted October 3, 2026</span>
-        <span class="stale">Possibly stale</span>
+        <span class="type-badge client" data-en="Client request" data-zh="客户需求">Client request</span>
+        <span class="posted" data-en="Posted October 3, 2026" data-zh="发布于 2026年10月3日">Posted October 3, 2026</span>
+        <span class="stale" data-en="Possibly stale" data-zh="可能已过期">Possibly stale</span>
       </div>
-      <h2>Deep clean wanted — 1-bedroom suite, steam cleaning</h2>
-      <p class="desc">Homeowner recently moved into a 1-bedroom suite and is looking for a deep clean including steam cleaning. They will provide the steam cleaner. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
+      <h2 data-en="Deep clean wanted — 1-bedroom suite, steam cleaning" data-zh="招深度清洁——一居室套房，需蒸汽清洁">Deep clean wanted — 1-bedroom suite, steam cleaning</h2>
+      <p class="desc" data-en="Homeowner recently moved into a 1-bedroom suite and is looking for a deep clean including steam cleaning. They will provide the steam cleaner. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it." data-zh="屋主刚搬入一居室套房，找深度清洁（含蒸汽清洁），屋主提供蒸汽清洁机。注意：发布已超过 2 周，花时间之前请先确认是否仍然有效。">Homeowner recently moved into a 1-bedroom suite and is looking for a deep clean including steam cleaning. They will provide the steam cleaner. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
       <dl class="meta">
-        <div><dt>Area</dt><dd>Newton, Surrey, BC</dd></div>
-        <div><dt>Posted</dt><dd>October 3, 2026</dd></div>
-        <div><dt>Type</dt><dd>Client request</dd></div>
-        <div><dt>Source</dt><dd>Facebook group “Professional House Cleaners in Vancouver”</dd></div>
+        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Newton, Surrey, BC" data-zh="素里牛顿区，BC (Newton, Surrey, BC)">Newton, Surrey, BC</dd></div>
+        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="October 3, 2026" data-zh="2026年10月3日">October 3, 2026</dd></div>
+        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Client request" data-zh="客户需求">Client request</dd></div>
+        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Professional House Cleaners in Vancouver”" data-zh="Facebook 群组 “Professional House Cleaners in Vancouver”">Facebook group “Professional House Cleaners in Vancouver”</dd></div>
       </dl>
       <div class="links">
-        <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1738519193883508/" target="_blank" rel="noopener">View original post ↗</a>
+        <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1738519193883508/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
     </article>
 
     <!-- 9: September 30 -->
     <article class="card" data-category="subcontracting">
       <div class="card-top">
-        <span class="type-badge">Commercial work opportunity</span>
-        <span class="posted">Posted September 30, 2026</span>
-        <span class="stale">Possibly stale</span>
+        <span class="type-badge" data-en="Commercial work opportunity" data-zh="商业清洁工作机会">Commercial work opportunity</span>
+        <span class="posted" data-en="Posted September 30, 2026" data-zh="发布于 2026年9月30日">Posted September 30, 2026</span>
+        <span class="stale" data-en="Possibly stale" data-zh="可能已过期">Possibly stale</span>
       </div>
-      <h2>Additional commercial cleaning work available</h2>
-      <p class="desc">Looking to connect with experienced independent cleaners or cleaning companies interested in taking on additional commercial cleaning work. Posted by Clean &amp; Co. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
+      <h2 data-en="Additional commercial cleaning work available" data-zh="有额外商业清洁工作机会">Additional commercial cleaning work available</h2>
+      <p class="desc" data-en="Looking to connect with experienced independent cleaners or cleaning companies interested in taking on additional commercial cleaning work. Posted by Clean &amp; Co. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it." data-zh="希望联系有经验的独立清洁工或清洁公司，承接额外商业清洁工作。发帖方：Clean &amp; Co.。注意：发布已超过 2 周，花时间之前请先确认是否仍然有效。">Looking to connect with experienced independent cleaners or cleaning companies interested in taking on additional commercial cleaning work. Posted by Clean &amp; Co. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
       <dl class="meta">
-        <div><dt>Area</dt><dd>Lower Mainland, BC</dd></div>
-        <div><dt>Posted</dt><dd>September 30, 2026</dd></div>
-        <div><dt>Type</dt><dd>Commercial work opportunity</dd></div>
-        <div><dt>Source</dt><dd>Facebook group “Cleaning Services in Vancouver, FraserValley” — Clean &amp; Co.</dd></div>
+        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Lower Mainland, BC" data-zh="低陆平原，BC (Lower Mainland, BC)">Lower Mainland, BC</dd></div>
+        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="September 30, 2026" data-zh="2026年9月30日">September 30, 2026</dd></div>
+        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Commercial work opportunity" data-zh="商业清洁工作机会">Commercial work opportunity</dd></div>
+        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Cleaning Services in Vancouver, FraserValley” — Clean &amp; Co." data-zh="Facebook 群组 “Cleaning Services in Vancouver, FraserValley” — Clean &amp; Co.">Facebook group “Cleaning Services in Vancouver, FraserValley” — Clean &amp; Co.</dd></div>
       </dl>
       <div class="links">
-        <a class="view-btn" href="https://facebook.com/groups/309371081333175/permalink/1424792613124344/" target="_blank" rel="noopener">View original post ↗</a>
+        <a class="view-btn" href="https://facebook.com/groups/309371081333175/permalink/1424792613124344/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
     </article>
 
     <!-- 10: September 29 -->
     <article class="card" data-category="business">
       <div class="card-top">
-        <span class="type-badge business">Business opportunity</span>
-        <span class="posted">Posted September 29, 2026</span>
-        <span class="stale">Possibly stale</span>
+        <span class="type-badge business" data-en="Business opportunity" data-zh="商业机会">Business opportunity</span>
+        <span class="posted" data-en="Posted September 29, 2026" data-zh="发布于 2026年9月29日">Posted September 29, 2026</span>
+        <span class="stale" data-en="Possibly stale" data-zh="可能已过期">Possibly stale</span>
       </div>
-      <h2>Cleaning subcontracts for sale</h2>
-      <p class="desc">Existing cleaning subcontracts offered for sale - a cleaning business could buy established client contracts. The same seller also posted this in other areas; only the most recent post is linked here to avoid duplicates. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
+      <h2 data-en="Cleaning subcontracts for sale" data-zh="清洁分包合同出售">Cleaning subcontracts for sale</h2>
+      <p class="desc" data-en="Existing cleaning subcontracts offered for sale - a cleaning business could buy established client contracts. The same seller also posted this in other areas; only the most recent post is linked here to avoid duplicates. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it." data-zh="现有清洁分包合同出售——清洁企业可购买已建立的客户合同。同一卖家也在其他地区发布过；为避免重复，这里只链接最新一条。注意：发布已超过 2 周，花时间之前请先确认是否仍然有效。">Existing cleaning subcontracts offered for sale - a cleaning business could buy established client contracts. The same seller also posted this in other areas; only the most recent post is linked here to avoid duplicates. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
       <dl class="meta">
-        <div><dt>Area</dt><dd>Burnaby / New Westminster · City of Vancouver · Tri-Cities / Pitt Meadows / Maple Ridge</dd></div>
-        <div><dt>Posted</dt><dd>September 29, 2026</dd></div>
-        <div><dt>Type</dt><dd>Business opportunity</dd></div>
-        <div><dt>Source</dt><dd>Craigslist Vancouver</dd></div>
+        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Burnaby / New Westminster · City of Vancouver · Tri-Cities / Pitt Meadows / Maple Ridge" data-zh="本拿比 / 新西敏 · 温哥华市 · 三联市 / 匹特草原 / 枫树岭 (Burnaby / New Westminster · City of Vancouver · Tri-Cities / Pitt Meadows / Maple Ridge)">Burnaby / New Westminster · City of Vancouver · Tri-Cities / Pitt Meadows / Maple Ridge</dd></div>
+        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="September 29, 2026" data-zh="2026年9月29日">September 29, 2026</dd></div>
+        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Business opportunity" data-zh="商业机会">Business opportunity</dd></div>
+        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Craigslist Vancouver" data-zh="Craigslist Vancouver">Craigslist Vancouver</dd></div>
       </dl>
       <div class="links">
-        <a class="view-btn" href="https://www.craigslist.org/view/d/langley-city-cleaning-subcontracts-for/69ymPENmrwW8cdxKjpsQFJ" target="_blank" rel="noopener">View original post ↗</a>
+        <a class="view-btn" href="https://www.craigslist.org/view/d/langley-city-cleaning-subcontracts-for/69ymPENmrwW8cdxKjpsQFJ" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
     </article>
 
     <!-- 11: September 21 -->
     <article class="card" data-category="subcontracting">
       <div class="card-top">
-        <span class="type-badge">Subcontracting opportunity</span>
-        <span class="posted">Posted September 21, 2026</span>
-        <span class="stale">Possibly stale</span>
+        <span class="type-badge" data-en="Subcontracting opportunity" data-zh="分包合作机会">Subcontracting opportunity</span>
+        <span class="posted" data-en="Posted September 21, 2026" data-zh="发布于 2026年9月21日">Posted September 21, 2026</span>
+        <span class="stale" data-en="Possibly stale" data-zh="可能已过期">Possibly stale</span>
       </div>
-      <h2>Independent cleaning subcontractors needed — Vancouver</h2>
-      <p class="desc">Timrach Cleaning Services, a registered cleaning business based in Abbotsford, is building a network of reliable independent cleaning subcontractors in Vancouver for residential cleaning opportunities as they become available. Requirements include residential cleaning experience, reliable transportation, own cleaning equipment and supplies, liability insurance, and references. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
+      <h2 data-en="Independent cleaning subcontractors needed — Vancouver" data-zh="招独立清洁分包商——温哥华">Independent cleaning subcontractors needed — Vancouver</h2>
+      <p class="desc" data-en="Timrach Cleaning Services, a registered cleaning business based in Abbotsford, is building a network of reliable independent cleaning subcontractors in Vancouver for residential cleaning opportunities as they become available. Requirements include residential cleaning experience, reliable transportation, own cleaning equipment and supplies, liability insurance, and references. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it." data-zh="Timrach Cleaning Services 是一家注册于阿伯茨福德的清洁企业，正在温哥华为陆续出现的住宅清洁机会组建可靠的独立清洁分包商网络。要求包括住宅清洁经验、可靠交通工具、自备清洁设备和用品、责任保险及推荐人。注意：发布已超过 2 周，花时间之前请先确认是否仍然有效。">Timrach Cleaning Services, a registered cleaning business based in Abbotsford, is building a network of reliable independent cleaning subcontractors in Vancouver for residential cleaning opportunities as they become available. Requirements include residential cleaning experience, reliable transportation, own cleaning equipment and supplies, liability insurance, and references. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
       <dl class="meta">
-        <div><dt>Area</dt><dd>Vancouver, BC</dd></div>
-        <div><dt>Posted</dt><dd>September 21, 2026</dd></div>
-        <div><dt>Type</dt><dd>Subcontracting opportunity</dd></div>
-        <div><dt>Source</dt><dd>Facebook group “Cleaning Services Vancouver &amp; Suburbs” — Timrach Cleaning Services</dd></div>
+        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Vancouver, BC" data-zh="温哥华，BC (Vancouver, BC)">Vancouver, BC</dd></div>
+        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="September 21, 2026" data-zh="2026年9月21日">September 21, 2026</dd></div>
+        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Subcontracting opportunity" data-zh="分包合作机会">Subcontracting opportunity</dd></div>
+        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Cleaning Services Vancouver &amp; Suburbs” — Timrach Cleaning Services" data-zh="Facebook 群组 “Cleaning Services Vancouver &amp; Suburbs” — Timrach Cleaning Services">Facebook group “Cleaning Services Vancouver &amp; Suburbs” — Timrach Cleaning Services</dd></div>
       </dl>
       <div class="links">
-        <a class="view-btn" href="https://facebook.com/groups/2091059191236785/permalink/2967677746908254/" target="_blank" rel="noopener">View original post ↗</a>
+        <a class="view-btn" href="https://facebook.com/groups/2091059191236785/permalink/2967677746908254/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
     </article>
 
     <!-- 12: September 16 -->
     <article class="card" data-category="client">
       <div class="card-top">
-        <span class="type-badge client">Client request</span>
-        <span class="posted">Posted September 16, 2026</span>
-        <span class="stale">Possibly stale</span>
+        <span class="type-badge client" data-en="Client request" data-zh="客户需求">Client request</span>
+        <span class="posted" data-en="Posted September 16, 2026" data-zh="发布于 2026年9月16日">Posted September 16, 2026</span>
+        <span class="stale" data-en="Possibly stale" data-zh="可能已过期">Possibly stale</span>
       </div>
-      <h2>House cleaner recommendation wanted — Metro Vancouver, $25/hr</h2>
-      <p class="desc">Asking for recommendations for a good house cleaner in the Metro Vancouver area, paying $25 per hour. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
+      <h2 data-en="House cleaner recommendation wanted — Metro Vancouver, $25/hr" data-zh="求推荐 house cleaner——大温哥华，$25/小时">House cleaner recommendation wanted — Metro Vancouver, $25/hr</h2>
+      <p class="desc" data-en="Asking for recommendations for a good house cleaner in the Metro Vancouver area, paying $25 per hour. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it." data-zh="求推荐大温哥华地区的好 house cleaner，时薪 $25。注意：发布已超过 2 周，花时间之前请先确认是否仍然有效。">Asking for recommendations for a good house cleaner in the Metro Vancouver area, paying $25 per hour. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
       <dl class="meta">
-        <div><dt>Area</dt><dd>Metro Vancouver, BC</dd></div>
-        <div><dt>Posted</dt><dd>September 16, 2026</dd></div>
-        <div><dt>Type</dt><dd>Client request</dd></div>
-        <div><dt>Source</dt><dd>Facebook group “Professional House Cleaners in Vancouver”</dd></div>
+        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Metro Vancouver, BC" data-zh="大温哥华，BC (Metro Vancouver, BC)">Metro Vancouver, BC</dd></div>
+        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="September 16, 2026" data-zh="2026年9月16日">September 16, 2026</dd></div>
+        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Client request" data-zh="客户需求">Client request</dd></div>
+        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Professional House Cleaners in Vancouver”" data-zh="Facebook 群组 “Professional House Cleaners in Vancouver”">Facebook group “Professional House Cleaners in Vancouver”</dd></div>
       </dl>
       <div class="links">
-        <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1723414148727346/" target="_blank" rel="noopener">View original post ↗</a>
+        <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1723414148727346/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
     </article>
 
     <!-- 13: September 10 -->
     <article class="card" data-category="subcontracting">
       <div class="card-top">
-        <span class="type-badge">Subcontracting partnership</span>
-        <span class="posted">Posted September 10, 2026</span>
-        <span class="stale">Possibly stale</span>
+        <span class="type-badge" data-en="Subcontracting partnership" data-zh="分包合作">Subcontracting partnership</span>
+        <span class="posted" data-en="Posted September 10, 2026" data-zh="发布于 2026年9月10日">Posted September 10, 2026</span>
+        <span class="stale" data-en="Possibly stale" data-zh="可能已过期">Possibly stale</span>
       </div>
-      <h2>Vancouver subcontractor cleaning company / team wanted</h2>
-      <p class="desc">A Calgary-based cleaning company is looking to connect with a reliable Vancouver-area cleaning company or team to work with as a subcontractor. Posted by NewGen Cleaning Services. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
+      <h2 data-en="Vancouver subcontractor cleaning company / team wanted" data-zh="招温哥华分包清洁公司 / 团队">Vancouver subcontractor cleaning company / team wanted</h2>
+      <p class="desc" data-en="A Calgary-based cleaning company is looking to connect with a reliable Vancouver-area cleaning company or team to work with as a subcontractor. Posted by NewGen Cleaning Services. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it." data-zh="一家卡尔加里清洁公司希望联系可靠的温哥华地区清洁公司或团队，作为分包商合作。发帖方：NewGen Cleaning Services。注意：发布已超过 2 周，花时间之前请先确认是否仍然有效。">A Calgary-based cleaning company is looking to connect with a reliable Vancouver-area cleaning company or team to work with as a subcontractor. Posted by NewGen Cleaning Services. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
       <dl class="meta">
-        <div><dt>Area</dt><dd>Vancouver Metropolitan Area, BC</dd></div>
-        <div><dt>Posted</dt><dd>September 10, 2026</dd></div>
-        <div><dt>Type</dt><dd>Subcontracting partnership</dd></div>
-        <div><dt>Source</dt><dd>Facebook group “Professional House Cleaners in Vancouver” — NewGen Cleaning Services (Calgary-based)</dd></div>
+        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Vancouver Metropolitan Area, BC" data-zh="温哥华都会区，BC (Vancouver Metropolitan Area, BC)">Vancouver Metropolitan Area, BC</dd></div>
+        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="September 10, 2026" data-zh="2026年9月10日">September 10, 2026</dd></div>
+        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Subcontracting partnership" data-zh="分包合作">Subcontracting partnership</dd></div>
+        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Professional House Cleaners in Vancouver” — NewGen Cleaning Services (Calgary-based)" data-zh="Facebook 群组 “Professional House Cleaners in Vancouver” — NewGen Cleaning Services（卡尔加里）">Facebook group “Professional House Cleaners in Vancouver” — NewGen Cleaning Services (Calgary-based)</dd></div>
       </dl>
       <div class="links">
-        <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1718505875884840/" target="_blank" rel="noopener">View original post ↗</a>
+        <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1718505875884840/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
     </article>
 
     <!-- 14: September 9 -->
     <article class="card" data-category="client">
       <div class="card-top">
-        <span class="type-badge client">Client request</span>
-        <span class="posted">Posted September 9, 2026</span>
-        <span class="stale">Possibly stale</span>
+        <span class="type-badge client" data-en="Client request" data-zh="客户需求">Client request</span>
+        <span class="posted" data-en="Posted September 9, 2026" data-zh="发布于 2026年9月9日">Posted September 9, 2026</span>
+        <span class="stale" data-en="Possibly stale" data-zh="可能已过期">Possibly stale</span>
       </div>
-      <h2>Family help wanted twice a week — cleaning and laundry</h2>
-      <p class="desc">Family looking for someone to help twice a week with cleaning and laundry and keeping the household together. Two self-employed adults and a two-year-old. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
+      <h2 data-en="Family help wanted twice a week — cleaning and laundry" data-zh="招家庭帮手，每周两次——清洁与洗衣">Family help wanted twice a week — cleaning and laundry</h2>
+      <p class="desc" data-en="Family looking for someone to help twice a week with cleaning and laundry and keeping the household together. Two self-employed adults and a two-year-old. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it." data-zh="一户家庭招人每周两次帮忙清洁、洗衣和打理家务。家庭成员为两位自雇成年人和一名两岁幼儿。注意：发布已超过 2 周，花时间之前请先确认是否仍然有效。">Family looking for someone to help twice a week with cleaning and laundry and keeping the household together. Two self-employed adults and a two-year-old. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
       <dl class="meta">
-        <div><dt>Area</dt><dd>Vancouver area (area not specified in post)</dd></div>
-        <div><dt>Posted</dt><dd>September 9, 2026</dd></div>
-        <div><dt>Type</dt><dd>Client request</dd></div>
-        <div><dt>Source</dt><dd>Facebook group “Professional House Cleaners in Vancouver”</dd></div>
+        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Vancouver area (area not specified in post)" data-zh="温哥华地区（帖子未注明具体区域） (Vancouver area)">Vancouver area (area not specified in post)</dd></div>
+        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="September 9, 2026" data-zh="2026年9月9日">September 9, 2026</dd></div>
+        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Client request" data-zh="客户需求">Client request</dd></div>
+        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Professional House Cleaners in Vancouver”" data-zh="Facebook 群组 “Professional House Cleaners in Vancouver”">Facebook group “Professional House Cleaners in Vancouver”</dd></div>
       </dl>
       <div class="links">
-        <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1717776529291108/" target="_blank" rel="noopener">View original post ↗</a>
+        <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1717776529291108/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
     </article>
 
     <!-- 15: September 4 -->
     <article class="card" data-category="client">
       <div class="card-top">
-        <span class="type-badge client">Client request</span>
-        <span class="posted">Posted September 4, 2026</span>
-        <span class="stale">Possibly stale</span>
+        <span class="type-badge client" data-en="Client request" data-zh="客户需求">Client request</span>
+        <span class="posted" data-en="Posted September 4, 2026" data-zh="发布于 2026年9月4日">Posted September 4, 2026</span>
+        <span class="stale" data-en="Possibly stale" data-zh="可能已过期">Possibly stale</span>
       </div>
-      <h2>Cleaner wanted — Burnaby Deer Lake area</h2>
-      <p class="desc">Looking for a cleaner in the Burnaby Deer Lake area. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
+      <h2 data-en="Cleaner wanted — Burnaby Deer Lake area" data-zh="招清洁工——本拿比鹿湖区">Cleaner wanted — Burnaby Deer Lake area</h2>
+      <p class="desc" data-en="Looking for a cleaner in the Burnaby Deer Lake area. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it." data-zh="招本拿比鹿湖区清洁工。注意：发布已超过 2 周，花时间之前请先确认是否仍然有效。">Looking for a cleaner in the Burnaby Deer Lake area. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
       <dl class="meta">
-        <div><dt>Area</dt><dd>Burnaby (Deer Lake), BC</dd></div>
-        <div><dt>Posted</dt><dd>September 4, 2026</dd></div>
-        <div><dt>Type</dt><dd>Client request</dd></div>
-        <div><dt>Source</dt><dd>Facebook group “Cleaning Services Vancouver &amp; Suburbs”</dd></div>
+        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Burnaby (Deer Lake), BC" data-zh="本拿比（鹿湖），BC (Burnaby (Deer Lake), BC)">Burnaby (Deer Lake), BC</dd></div>
+        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="September 4, 2026" data-zh="2026年9月4日">September 4, 2026</dd></div>
+        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Client request" data-zh="客户需求">Client request</dd></div>
+        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Cleaning Services Vancouver &amp; Suburbs”" data-zh="Facebook 群组 “Cleaning Services Vancouver &amp; Suburbs”">Facebook group “Cleaning Services Vancouver &amp; Suburbs”</dd></div>
       </dl>
       <div class="links">
-        <a class="view-btn" href="https://facebook.com/groups/2091059191236785/permalink/2950823388593690/" target="_blank" rel="noopener">View original post ↗</a>
+        <a class="view-btn" href="https://facebook.com/groups/2091059191236785/permalink/2950823388593690/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
     </article>
 
     <!-- 16: September 3 -->
     <article class="card" data-category="client">
       <div class="card-top">
-        <span class="type-badge client">Client request</span>
-        <span class="posted">Posted September 3, 2026</span>
-        <span class="stale">Possibly stale</span>
+        <span class="type-badge client" data-en="Client request" data-zh="客户需求">Client request</span>
+        <span class="posted" data-en="Posted September 3, 2026" data-zh="发布于 2026年9月3日">Posted September 3, 2026</span>
+        <span class="stale" data-en="Possibly stale" data-zh="可能已过期">Possibly stale</span>
       </div>
-      <h2>Cleaner wanted — Kitsilano area</h2>
-      <p class="desc">Looking for a cleaner in Vancouver, around the Kitsilano area. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
+      <h2 data-en="Cleaner wanted — Kitsilano area" data-zh="招清洁工——基斯兰奴区">Cleaner wanted — Kitsilano area</h2>
+      <p class="desc" data-en="Looking for a cleaner in Vancouver, around the Kitsilano area. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it." data-zh="招温哥华基斯兰奴区附近清洁工。注意：发布已超过 2 周，花时间之前请先确认是否仍然有效。">Looking for a cleaner in Vancouver, around the Kitsilano area. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
       <dl class="meta">
-        <div><dt>Area</dt><dd>Vancouver (Kitsilano), BC</dd></div>
-        <div><dt>Posted</dt><dd>September 3, 2026</dd></div>
-        <div><dt>Type</dt><dd>Client request</dd></div>
-        <div><dt>Source</dt><dd>Facebook group “Cleaning Services Vancouver &amp; Suburbs”</dd></div>
+        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Vancouver (Kitsilano), BC" data-zh="温哥华（基斯兰奴），BC (Vancouver (Kitsilano), BC)">Vancouver (Kitsilano), BC</dd></div>
+        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="September 3, 2026" data-zh="2026年9月3日">September 3, 2026</dd></div>
+        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Client request" data-zh="客户需求">Client request</dd></div>
+        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Cleaning Services Vancouver &amp; Suburbs”" data-zh="Facebook 群组 “Cleaning Services Vancouver &amp; Suburbs”">Facebook group “Cleaning Services Vancouver &amp; Suburbs”</dd></div>
       </dl>
       <div class="links">
-        <a class="view-btn" href="https://facebook.com/groups/2091059191236785/permalink/2950187398657289/" target="_blank" rel="noopener">View original post ↗</a>
+        <a class="view-btn" href="https://facebook.com/groups/2091059191236785/permalink/2950187398657289/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
     </article>
 
     <!-- 17: September 2 -->
     <article class="card" data-category="business">
       <div class="card-top">
-        <span class="type-badge business">Business opportunity</span>
-        <span class="posted">Posted September 2, 2026</span>
-        <span class="stale">Possibly stale</span>
+        <span class="type-badge business" data-en="Business opportunity" data-zh="商业机会">Business opportunity</span>
+        <span class="posted" data-en="Posted September 2, 2026" data-zh="发布于 2026年9月2日">Posted September 2, 2026</span>
+        <span class="stale" data-en="Possibly stale" data-zh="可能已过期">Possibly stale</span>
       </div>
-      <h2>Free 60 days: review marketing help for 2 cleaning businesses</h2>
-      <p class="desc">Review Revenue is launching and looking for 2 cleaning businesses to work with free for 60 days, helping them get more 5-star Google reviews, stand out against local competitors, and turn their online reputation into more bookings. Note: posted September 2 with a 60-day free window, so confirm a spot is still open before spending time on it.</p>
+      <h2 data-en="Free 60 days: review marketing help for 2 cleaning businesses" data-zh="免费 60 天：为 2 家清洁企业提供评价营销帮助">Free 60 days: review marketing help for 2 cleaning businesses</h2>
+      <p class="desc" data-en="Review Revenue is launching and looking for 2 cleaning businesses to work with free for 60 days, helping them get more 5-star Google reviews, stand out against local competitors, and turn their online reputation into more bookings. Note: posted September 2 with a 60-day free window, so confirm a spot is still open before spending time on it." data-zh="Review Revenue 正在起步，招募 2 家清洁企业免费合作 60 天，帮助获得更多 Google 五星评价、在本地竞争中脱颖而出，并把线上口碑转化为更多订单。注意：该帖发布于 9 月 2 日，免费期为 60 天，花时间之前请先确认名额是否仍在。">Review Revenue is launching and looking for 2 cleaning businesses to work with free for 60 days, helping them get more 5-star Google reviews, stand out against local competitors, and turn their online reputation into more bookings. Note: posted September 2 with a 60-day free window, so confirm a spot is still open before spending time on it.</p>
       <dl class="meta">
-        <div><dt>Area</dt><dd>Vancouver area, BC</dd></div>
-        <div><dt>Posted</dt><dd>September 2, 2026</dd></div>
-        <div><dt>Type</dt><dd>Business opportunity</dd></div>
-        <div><dt>Source</dt><dd>Facebook group “Cleaning Services Vancouver &amp; Suburbs” — Review Revenue</dd></div>
+        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Vancouver area, BC" data-zh="温哥华地区，BC (Vancouver area, BC)">Vancouver area, BC</dd></div>
+        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="September 2, 2026" data-zh="2026年9月2日">September 2, 2026</dd></div>
+        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Business opportunity" data-zh="商业机会">Business opportunity</dd></div>
+        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Cleaning Services Vancouver &amp; Suburbs” — Review Revenue" data-zh="Facebook 群组 “Cleaning Services Vancouver &amp; Suburbs” — Review Revenue">Facebook group “Cleaning Services Vancouver &amp; Suburbs” — Review Revenue</dd></div>
       </dl>
       <div class="links">
-        <a class="view-btn" href="https://facebook.com/groups/2091059191236785/permalink/2948699572139405/" target="_blank" rel="noopener">View original post ↗</a>
+        <a class="view-btn" href="https://facebook.com/groups/2091059191236785/permalink/2948699572139405/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
     </article>
 
     <!-- 18: August 29 -->
     <article class="card" data-category="client">
       <div class="card-top">
-        <span class="type-badge client">Client request</span>
-        <span class="posted">Posted August 29, 2026</span>
-        <span class="stale">Possibly stale</span>
+        <span class="type-badge client" data-en="Client request" data-zh="客户需求">Client request</span>
+        <span class="posted" data-en="Posted August 29, 2026" data-zh="发布于 2026年8月29日">Posted August 29, 2026</span>
+        <span class="stale" data-en="Possibly stale" data-zh="可能已过期">Possibly stale</span>
       </div>
-      <h2>Deep clean wanted — small downtown studio</h2>
-      <p class="desc">Looking for a deep clean of a small downtown Vancouver studio apartment, 380 sq ft. Poster asked for quotes in the thread or by DM. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
+      <h2 data-en="Deep clean wanted — small downtown studio" data-zh="招深度清洁——市中心小 studio">Deep clean wanted — small downtown studio</h2>
+      <p class="desc" data-en="Looking for a deep clean of a small downtown Vancouver studio apartment, 380 sq ft. Poster asked for quotes in the thread or by DM. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it." data-zh="招深度清洁温哥华市中心一间 380 平方英尺的小 studio 公寓。发帖人请有意者在帖子下或私信报价。注意：发布已超过 2 周，花时间之前请先确认是否仍然有效。">Looking for a deep clean of a small downtown Vancouver studio apartment, 380 sq ft. Poster asked for quotes in the thread or by DM. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
       <dl class="meta">
-        <div><dt>Area</dt><dd>Downtown Vancouver, BC</dd></div>
-        <div><dt>Posted</dt><dd>August 29, 2026</dd></div>
-        <div><dt>Type</dt><dd>Client request</dd></div>
-        <div><dt>Source</dt><dd>Facebook group “Professional House Cleaners in Vancouver”</dd></div>
+        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Downtown Vancouver, BC" data-zh="温哥华市中心，BC (Downtown Vancouver, BC)">Downtown Vancouver, BC</dd></div>
+        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="August 29, 2026" data-zh="2026年8月29日">August 29, 2026</dd></div>
+        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Client request" data-zh="客户需求">Client request</dd></div>
+        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Professional House Cleaners in Vancouver”" data-zh="Facebook 群组 “Professional House Cleaners in Vancouver”">Facebook group “Professional House Cleaners in Vancouver”</dd></div>
       </dl>
       <div class="links">
-        <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1708327946902633/" target="_blank" rel="noopener">View original post ↗</a>
+        <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1708327946902633/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
     </article>
 
     <!-- 19: August 26 -->
     <article class="card" data-category="subcontracting">
       <div class="card-top">
-        <span class="type-badge">Subcontracting opportunity</span>
-        <span class="posted">Posted August 26, 2026</span>
-        <span class="stale">Possibly stale</span>
+        <span class="type-badge" data-en="Subcontracting opportunity" data-zh="分包合作机会">Subcontracting opportunity</span>
+        <span class="posted" data-en="Posted August 26, 2026" data-zh="发布于 2026年8月26日">Posted August 26, 2026</span>
+        <span class="stale" data-en="Possibly stale" data-zh="可能已过期">Possibly stale</span>
       </div>
-      <h2>Cleaning contractor wanted — 2 to 3 days a week</h2>
-      <p class="desc">Lemon Bee is looking for a reliable cleaning contractor, approximately 2 to 3 days of work per week mostly in the morning, with cash payment at the end of each shift and a commitment of at least 6 months. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
+      <h2 data-en="Cleaning contractor wanted — 2 to 3 days a week" data-zh="招清洁承包商——每周 2 至 3 天">Cleaning contractor wanted — 2 to 3 days a week</h2>
+      <p class="desc" data-en="Lemon Bee is looking for a reliable cleaning contractor, approximately 2 to 3 days of work per week mostly in the morning, with cash payment at the end of each shift and a commitment of at least 6 months. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it." data-zh="Lemon Bee 招可靠清洁承包商，每周约 2 至 3 天，多为上午工作，每班结束时现金结算，至少合作 6 个月。注意：发布已超过 2 周，花时间之前请先确认是否仍然有效。">Lemon Bee is looking for a reliable cleaning contractor, approximately 2 to 3 days of work per week mostly in the morning, with cash payment at the end of each shift and a commitment of at least 6 months. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
       <dl class="meta">
-        <div><dt>Area</dt><dd>Vancouver area, BC</dd></div>
-        <div><dt>Posted</dt><dd>August 26, 2026</dd></div>
-        <div><dt>Type</dt><dd>Subcontracting opportunity</dd></div>
-        <div><dt>Source</dt><dd>Facebook group “Cleaning Services Vancouver &amp; Suburbs” — Lemon Bee</dd></div>
+        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Vancouver area, BC" data-zh="温哥华地区，BC (Vancouver area, BC)">Vancouver area, BC</dd></div>
+        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="August 26, 2026" data-zh="2026年8月26日">August 26, 2026</dd></div>
+        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Subcontracting opportunity" data-zh="分包合作机会">Subcontracting opportunity</dd></div>
+        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Cleaning Services Vancouver &amp; Suburbs” — Lemon Bee" data-zh="Facebook 群组 “Cleaning Services Vancouver &amp; Suburbs” — Lemon Bee">Facebook group “Cleaning Services Vancouver &amp; Suburbs” — Lemon Bee</dd></div>
       </dl>
       <div class="links">
-        <a class="view-btn" href="https://facebook.com/groups/2091059191236785/permalink/2942212532788109/" target="_blank" rel="noopener">View original post ↗</a>
+        <a class="view-btn" href="https://facebook.com/groups/2091059191236785/permalink/2942212532788109/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
     </article>
 
     <!-- 20: August 21 -->
     <article class="card" data-category="subcontracting">
       <div class="card-top">
-        <span class="type-badge">Subcontracting opportunity</span>
-        <span class="posted">Posted August 21, 2026</span>
-        <span class="stale">Possibly stale</span>
+        <span class="type-badge" data-en="Subcontracting opportunity" data-zh="分包合作机会">Subcontracting opportunity</span>
+        <span class="posted" data-en="Posted August 21, 2026" data-zh="发布于 2026年8月21日">Posted August 21, 2026</span>
+        <span class="stale" data-en="Possibly stale" data-zh="可能已过期">Possibly stale</span>
       </div>
-      <h2>Independent cleaners network — Surrey and area</h2>
-      <p class="desc">The Clean Club is building a network of independent cleaners in Surrey and surrounding areas to pick up residential cleaning jobs as they come in, one-time and recurring, accepting jobs based on availability. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
+      <h2 data-en="Independent cleaners network — Surrey and area" data-zh="独立清洁工网络——素里及周边">Independent cleaners network — Surrey and area</h2>
+      <p class="desc" data-en="The Clean Club is building a network of independent cleaners in Surrey and surrounding areas to pick up residential cleaning jobs as they come in, one-time and recurring, accepting jobs based on availability. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it." data-zh="The Clean Club 正在素里及周边地区组建独立清洁工网络，按出现顺序承接住宅清洁工作（一次性或定期），按个人时间接单。注意：发布已超过 2 周，花时间之前请先确认是否仍然有效。">The Clean Club is building a network of independent cleaners in Surrey and surrounding areas to pick up residential cleaning jobs as they come in, one-time and recurring, accepting jobs based on availability. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
       <dl class="meta">
-        <div><dt>Area</dt><dd>Surrey and surrounding areas, BC</dd></div>
-        <div><dt>Posted</dt><dd>August 21, 2026</dd></div>
-        <div><dt>Type</dt><dd>Subcontracting opportunity</dd></div>
-        <div><dt>Source</dt><dd>Facebook group “Professional House Cleaners in Vancouver” — The Clean Club</dd></div>
+        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Surrey and surrounding areas, BC" data-zh="素里及周边地区，BC (Surrey and surrounding areas, BC)">Surrey and surrounding areas, BC</dd></div>
+        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="August 21, 2026" data-zh="2026年8月21日">August 21, 2026</dd></div>
+        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Subcontracting opportunity" data-zh="分包合作机会">Subcontracting opportunity</dd></div>
+        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Professional House Cleaners in Vancouver” — The Clean Club" data-zh="Facebook 群组 “Professional House Cleaners in Vancouver” — The Clean Club">Facebook group “Professional House Cleaners in Vancouver” — The Clean Club</dd></div>
       </dl>
       <div class="links">
-        <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1701999700868791/" target="_blank" rel="noopener">View original post ↗</a>
+        <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1701999700868791/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
     </article>
 
     <!-- 21: July 28 -->
     <article class="card" data-category="client">
       <div class="card-top">
-        <span class="type-badge client">Client request</span>
-        <span class="posted">Posted July 28, 2026</span>
-        <span class="stale">Possibly stale</span>
+        <span class="type-badge client" data-en="Client request" data-zh="客户需求">Client request</span>
+        <span class="posted" data-en="Posted July 28, 2026" data-zh="发布于 2026年7月28日">Posted July 28, 2026</span>
+        <span class="stale" data-en="Possibly stale" data-zh="可能已过期">Possibly stale</span>
       </div>
-      <h2>Back-up cleaner wanted — waterfront Airbnb, West Vancouver</h2>
-      <p class="desc">Looking for a back-up cleaner for a waterfront Airbnb in West Vancouver, just north of Horseshoe Bay. Garbage and recycling removal and cleaning of the BBQ must be included. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
+      <h2 data-en="Back-up cleaner wanted — waterfront Airbnb, West Vancouver" data-zh="招备用清洁工——西温哥华海滨 Airbnb">Back-up cleaner wanted — waterfront Airbnb, West Vancouver</h2>
+      <p class="desc" data-en="Looking for a back-up cleaner for a waterfront Airbnb in West Vancouver, just north of Horseshoe Bay. Garbage and recycling removal and cleaning of the BBQ must be included. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it." data-zh="招西温哥华海滨 Airbnb（马蹄湾以北不远）的备用清洁工，须包括倒垃圾和可回收物以及清洁烧烤架。注意：发布已超过 2 周，花时间之前请先确认是否仍然有效。">Looking for a back-up cleaner for a waterfront Airbnb in West Vancouver, just north of Horseshoe Bay. Garbage and recycling removal and cleaning of the BBQ must be included. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
       <dl class="meta">
-        <div><dt>Area</dt><dd>West Vancouver, BC</dd></div>
-        <div><dt>Posted</dt><dd>July 28, 2026</dd></div>
-        <div><dt>Type</dt><dd>Client request</dd></div>
-        <div><dt>Source</dt><dd>Facebook group “Professional House Cleaners in Vancouver”</dd></div>
+        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="West Vancouver, BC" data-zh="西温哥华，BC (West Vancouver, BC)">West Vancouver, BC</dd></div>
+        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="July 28, 2026" data-zh="2026年7月28日">July 28, 2026</dd></div>
+        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Client request" data-zh="客户需求">Client request</dd></div>
+        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Professional House Cleaners in Vancouver”" data-zh="Facebook 群组 “Professional House Cleaners in Vancouver”">Facebook group “Professional House Cleaners in Vancouver”</dd></div>
       </dl>
       <div class="links">
-        <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1681689019566526/" target="_blank" rel="noopener">View original post ↗</a>
+        <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1681689019566526/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
     </article>
 
     <!-- 22: July 25 -->
     <article class="card" data-category="client">
       <div class="card-top">
-        <span class="type-badge client">Client request</span>
-        <span class="posted">Posted July 25, 2026</span>
-        <span class="stale">Possibly stale</span>
+        <span class="type-badge client" data-en="Client request" data-zh="客户需求">Client request</span>
+        <span class="posted" data-en="Posted July 25, 2026" data-zh="发布于 2026年7月25日">Posted July 25, 2026</span>
+        <span class="stale" data-en="Possibly stale" data-zh="可能已过期">Possibly stale</span>
       </div>
-      <h2>Cleaner wanted for two bathrooms, once or twice a month — Burnaby</h2>
-      <p class="desc">Couple looking for a cleaner mainly to clean their two bathrooms once or twice a month, in Burnaby. They prefer someone who has rates readily available. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
+      <h2 data-en="Cleaner wanted for two bathrooms, once or twice a month — Burnaby" data-zh="招清洁工，每月一两次清洁两个浴室——本拿比">Cleaner wanted for two bathrooms, once or twice a month — Burnaby</h2>
+      <p class="desc" data-en="Couple looking for a cleaner mainly to clean their two bathrooms once or twice a month, in Burnaby. They prefer someone who has rates readily available. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it." data-zh="一对夫妇招清洁工，主要每月一两次清洁本拿比家中的两个浴室。他们希望对方能直接提供收费标准。注意：发布已超过 2 周，花时间之前请先确认是否仍然有效。">Couple looking for a cleaner mainly to clean their two bathrooms once or twice a month, in Burnaby. They prefer someone who has rates readily available. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
       <dl class="meta">
-        <div><dt>Area</dt><dd>Burnaby, BC</dd></div>
-        <div><dt>Posted</dt><dd>July 25, 2026</dd></div>
-        <div><dt>Type</dt><dd>Client request</dd></div>
-        <div><dt>Source</dt><dd>Facebook group “Professional House Cleaners in Vancouver”</dd></div>
+        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Burnaby, BC" data-zh="本拿比，BC (Burnaby, BC)">Burnaby, BC</dd></div>
+        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="July 25, 2026" data-zh="2026年7月25日">July 25, 2026</dd></div>
+        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Client request" data-zh="客户需求">Client request</dd></div>
+        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Professional House Cleaners in Vancouver”" data-zh="Facebook 群组 “Professional House Cleaners in Vancouver”">Facebook group “Professional House Cleaners in Vancouver”</dd></div>
       </dl>
       <div class="links">
-        <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1679181629817265/" target="_blank" rel="noopener">View original post ↗</a>
+        <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1679181629817265/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
     </article>
 
     <!-- 23: July 19 -->
     <article class="card" data-category="client">
       <div class="card-top">
-        <span class="type-badge client">Client request</span>
-        <span class="posted">Posted July 19, 2026</span>
-        <span class="stale">Possibly stale</span>
+        <span class="type-badge client" data-en="Client request" data-zh="客户需求">Client request</span>
+        <span class="posted" data-en="Posted July 19, 2026" data-zh="发布于 2026年7月19日">Posted July 19, 2026</span>
+        <span class="stale" data-en="Possibly stale" data-zh="可能已过期">Possibly stale</span>
       </div>
-      <h2>Reliable cleaner wanted — property in Central Burnaby</h2>
-      <p class="desc">Looking for a reliable cleaner for a property in Central Burnaby. A basic clean for a few to several hours. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
+      <h2 data-en="Reliable cleaner wanted — property in Central Burnaby" data-zh="招可靠清洁工——本拿比中部物业">Reliable cleaner wanted — property in Central Burnaby</h2>
+      <p class="desc" data-en="Looking for a reliable cleaner for a property in Central Burnaby. A basic clean for a few to several hours. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it." data-zh="招可靠清洁工，服务本拿比中部一处物业；基础清洁，几小时不等。注意：发布已超过 2 周，花时间之前请先确认是否仍然有效。">Looking for a reliable cleaner for a property in Central Burnaby. A basic clean for a few to several hours. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
       <dl class="meta">
-        <div><dt>Area</dt><dd>Central Burnaby, BC</dd></div>
-        <div><dt>Posted</dt><dd>July 19, 2026</dd></div>
-        <div><dt>Type</dt><dd>Client request</dd></div>
-        <div><dt>Source</dt><dd>Facebook group “Professional House Cleaners in Vancouver”</dd></div>
+        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Central Burnaby, BC" data-zh="本拿比中部，BC (Central Burnaby, BC)">Central Burnaby, BC</dd></div>
+        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="July 19, 2026" data-zh="2026年7月19日">July 19, 2026</dd></div>
+        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Client request" data-zh="客户需求">Client request</dd></div>
+        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Professional House Cleaners in Vancouver”" data-zh="Facebook 群组 “Professional House Cleaners in Vancouver”">Facebook group “Professional House Cleaners in Vancouver”</dd></div>
       </dl>
       <div class="links">
-        <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1674840876918007/" target="_blank" rel="noopener">View original post ↗</a>
+        <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1674840876918007/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
     </article>
 
-    <div class="empty hidden" id="emptyState">No opportunities match this filter.</div>
+    <div class="empty hidden" id="emptyState" data-en="No opportunities match this filter." data-zh="没有符合该筛选条件的商机。">No opportunities match this filter.</div>
 
   </main>
 
   <footer>
-    <p><strong>How to use this board:</strong> open the original post and reply to the poster there — Facebook group posts may require joining the group first. This board does not take applications, bookings, or payments.</p>
-    <p><strong>Disclaimer:</strong> Listings are shared for information only. This board is not affiliated with the posters and does not verify or guarantee availability, accuracy, or terms. Please confirm details with the original poster before contacting them or paying anything.</p>
-    <p>Sources checked: Facebook cleaning groups for Vancouver and the Fraser Valley, and Craigslist Vancouver. Snapshot verified October 25, 2026. Full backfill October 26, 2026: 6 more listings added (5 from Facebook, 1 from Craigslist and verified live that day), all cards sorted newest first, posts over 2 weeks old marked as possibly stale. Refreshed daily.</p>
+    <p data-en-html="<strong>How to use this board:</strong> open the original post and reply to the poster there — Facebook group posts may require joining the group first. This board does not take applications, bookings, or payments." data-zh-html="<strong>如何使用本公告板：</strong>打开原始帖子并在那里直接回复发帖人——Facebook 群组帖子可能需要先加入群组。本公告板不接受申请、预订或付款。"><strong>How to use this board:</strong> open the original post and reply to the poster there — Facebook group posts may require joining the group first. This board does not take applications, bookings, or payments.</p>
+    <p data-en-html="<strong>Disclaimer:</strong> Listings are shared for information only. This board is not affiliated with the posters and does not verify or guarantee availability, accuracy, or terms. Please confirm details with the original poster before contacting them or paying anything." data-zh-html="<strong>免责声明：</strong>信息仅供参考。本公告板与发帖人无关，不核实也不保证信息的有效性、准确性或条款。联系发帖人或付款前请先与原始发帖人确认详情。"><strong>Disclaimer:</strong> Listings are shared for information only. This board is not affiliated with the posters and does not verify or guarantee availability, accuracy, or terms. Please confirm details with the original poster before contacting them or paying anything.</p>
+    <p data-en-html="Sources checked: Facebook cleaning groups for Vancouver and the Fraser Valley, and Craigslist Vancouver. Snapshot verified October 25, 2026. Full backfill October 26, 2026: 6 more listings added (5 from Facebook, 1 from Craigslist and verified live that day), all cards sorted newest first, posts over 2 weeks old marked as possibly stale. Refreshed daily." data-zh-html="信息来源：温哥华及菲沙河谷的 Facebook 清洁群组和 Craigslist Vancouver。快照核实于 2026年10月25日。2026年10月26日完整补录：新增 6 条信息（5 条来自 Facebook，1 条来自 Craigslist 并于当日核实有效），所有卡片按最新排序，超过 2 周的帖子标注为可能已过期。每天更新。">Sources checked: Facebook cleaning groups for Vancouver and the Fraser Valley, and Craigslist Vancouver. Snapshot verified October 25, 2026. Full backfill October 26, 2026: 6 more listings added (5 from Facebook, 1 from Craigslist and verified live that day), all cards sorted newest first, posts over 2 weeks old marked as possibly stale. Refreshed daily.</p>
   </footer>
 
 </div>
@@ -658,8 +680,11 @@
     var countLine = document.getElementById('countLine');
     var emptyState = document.getElementById('emptyState');
     var total = cards.length;
+    var currentFilter = 'all';
+    var currentLang = 'en';
 
     function applyFilter(filter) {
+      currentFilter = filter;
       var shown = 0;
       cards.forEach(function (card) {
         var match = filter === 'all' || card.getAttribute('data-category') === filter;
@@ -669,8 +694,25 @@
       buttons.forEach(function (btn) {
         btn.setAttribute('aria-pressed', btn.getAttribute('data-filter') === filter ? 'true' : 'false');
       });
-      countLine.textContent = 'Showing ' + shown + ' of ' + total + ' opportunities';
+      countLine.textContent = currentLang === 'zh'
+        ? '显示 ' + shown + ' 条，共 ' + total + ' 条商机'
+        : 'Showing ' + shown + ' of ' + total + ' opportunities';
       emptyState.classList.toggle('hidden', shown !== 0);
+    }
+
+    function setLang(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+      document.title = lang === 'zh' ? '温哥华清洁商机板' : 'Vancouver Cleaning Opportunity Board';
+      document.querySelectorAll('[data-zh]').forEach(function (el) {
+        el.textContent = lang === 'zh' ? el.getAttribute('data-zh') : el.getAttribute('data-en');
+      });
+      document.querySelectorAll('[data-zh-html]').forEach(function (el) {
+        el.innerHTML = lang === 'zh' ? el.getAttribute('data-zh-html') : el.getAttribute('data-en-html');
+      });
+      document.getElementById('langEn').setAttribute('aria-pressed', lang === 'en' ? 'true' : 'false');
+      document.getElementById('langZh').setAttribute('aria-pressed', lang === 'zh' ? 'true' : 'false');
+      applyFilter(currentFilter);
     }
 
     buttons.forEach(function (btn) {
@@ -678,6 +720,8 @@
         applyFilter(btn.getAttribute('data-filter'));
       });
     });
+    document.getElementById('langEn').addEventListener('click', function () { setLang('en'); });
+    document.getElementById('langZh').addEventListener('click', function () { setLang('zh'); });
   })();
 </script>
 </body>
