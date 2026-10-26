@@ -118,6 +118,7 @@
   .type-badge.business{background:#33566e}
   @media (prefers-color-scheme: dark){ .type-badge.business{background:#7fb0d1;color:#0d1b26} }
   .posted{color:var(--faint);font-size:.88rem;font-weight:600}
+  .stale{color:var(--warn-ink);background:var(--warn-bg);border:1px solid var(--warn-border);font-size:.74rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border-radius:6px}
   .card h2{
     font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
     font-size:1.42rem;line-height:1.2;font-weight:700;margin:0 0 8px;
@@ -160,7 +161,7 @@
     <p class="kicker">Vancouver &amp; Lower Mainland · Cleaning businesses only</p>
     <h1>Vancouver Cleaning Opportunity Board</h1>
     <p class="lede"><strong>Opportunities for cleaning businesses — not a job board for employees.</strong> Every listing below is a real post found on Facebook groups or Craigslist: a client asking for cleaning, a company looking for a subcontractor, or cleaning contracts offered for sale.</p>
-    <p class="sub">Vancouver area only. No employment ads hiring individual cleaners, no companies advertising their own services, and no Canada-wide tender lists. Each card links straight to the original post so you can reply to the poster directly.</p>
+    <p class="sub">Vancouver area only. No employment ads hiring individual cleaners, no companies advertising their own services, and no Canada-wide tender lists. Each card links straight to the original post so you can reply to the poster directly. Listings are newest first; posts over 2 weeks old are marked as possibly stale.</p>
     <div class="scope-row" aria-label="Board scope">
       <span class="scope">📍 Vancouver / Lower Mainland only</span>
       <span class="scope">🏢 For businesses &amp; subcontractors</span>
@@ -169,42 +170,23 @@
   </header>
 
   <div class="notice" role="note">
-    <strong>Snapshot verified October 25, 2026.</strong> These posts were live when checked on that date. Listings may have been filled, taken down, or changed since posting — open the original post to confirm it is still available before you spend time on it.
+    <strong>Board refreshed October 26, 2026.</strong> New listings are added daily; posts over 2 weeks old are marked as possibly stale. Listings may have been filled, taken down, or changed since posting — open the original post to confirm it is still available before you spend time on it.
   </div>
 
   <section class="filters" aria-label="Filter opportunities by type">
     <p class="filters-label">Filter by type</p>
     <div class="filter-row" role="group" aria-label="Opportunity type filters">
-      <button type="button" class="filter-btn" data-filter="all" aria-pressed="true">All opportunities (7)</button>
+      <button type="button" class="filter-btn" data-filter="all" aria-pressed="true">All opportunities (13)</button>
       <button type="button" class="filter-btn" data-filter="client" aria-pressed="false">Client request (2)</button>
-      <button type="button" class="filter-btn" data-filter="subcontracting" aria-pressed="false">Subcontracting (4)</button>
-      <button type="button" class="filter-btn" data-filter="business" aria-pressed="false">Business opportunity (1)</button>
+      <button type="button" class="filter-btn" data-filter="subcontracting" aria-pressed="false">Subcontracting (9)</button>
+      <button type="button" class="filter-btn" data-filter="business" aria-pressed="false">Business opportunity (2)</button>
     </div>
-    <p class="count-line" id="countLine" aria-live="polite">Showing 7 of 7 opportunities</p>
+    <p class="count-line" id="countLine" aria-live="polite">Showing 13 of 13 opportunities</p>
   </section>
 
   <main class="board" id="board">
 
-    <!-- 1 -->
-    <article class="card" data-category="client">
-      <div class="card-top">
-        <span class="type-badge client">Client request</span>
-        <span class="posted">Posted October 3, 2026</span>
-      </div>
-      <h2>Deep clean wanted — 1-bedroom suite, steam cleaning</h2>
-      <p class="desc">Homeowner recently moved into a 1-bedroom suite and is looking for a deep clean including steam cleaning. They will provide the steam cleaner.</p>
-      <dl class="meta">
-        <div><dt>Area</dt><dd>Newton, Surrey, BC</dd></div>
-        <div><dt>Posted</dt><dd>October 3, 2026</dd></div>
-        <div><dt>Type</dt><dd>Client request</dd></div>
-        <div><dt>Source</dt><dd>Facebook group “Professional House Cleaners in Vancouver”</dd></div>
-      </dl>
-      <div class="links">
-        <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1738519193883508/" target="_blank" rel="noopener">View original post ↗</a>
-      </div>
-    </article>
-
-    <!-- 2 -->
+    <!-- 1: Oct 23 -->
     <article class="card" data-category="subcontracting">
       <div class="card-top">
         <span class="type-badge">Subcontracting opportunity</span>
@@ -223,64 +205,7 @@
       </div>
     </article>
 
-    <!-- 3 -->
-    <article class="card" data-category="subcontracting">
-      <div class="card-top">
-        <span class="type-badge">Subcontracting partnership</span>
-        <span class="posted">Posted September 10, 2026</span>
-      </div>
-      <h2>Vancouver subcontractor cleaning company / team wanted</h2>
-      <p class="desc">A Calgary-based cleaning company is looking to connect with a reliable Vancouver-area cleaning company or team to work with as a subcontractor. Posted by NewGen Cleaning Services.</p>
-      <dl class="meta">
-        <div><dt>Area</dt><dd>Vancouver Metropolitan Area, BC</dd></div>
-        <div><dt>Posted</dt><dd>September 10, 2026</dd></div>
-        <div><dt>Type</dt><dd>Subcontracting partnership</dd></div>
-        <div><dt>Source</dt><dd>Facebook group “Professional House Cleaners in Vancouver” — NewGen Cleaning Services (Calgary-based)</dd></div>
-      </dl>
-      <div class="links">
-        <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1718505875884840/" target="_blank" rel="noopener">View original post ↗</a>
-      </div>
-    </article>
-
-    <!-- 4 -->
-    <article class="card" data-category="subcontracting">
-      <div class="card-top">
-        <span class="type-badge">Commercial work opportunity</span>
-        <span class="posted">Posted September 30, 2026</span>
-      </div>
-      <h2>Additional commercial cleaning work available</h2>
-      <p class="desc">Looking to connect with experienced independent cleaners or cleaning companies interested in taking on additional commercial cleaning work. Posted by Clean &amp; Co.</p>
-      <dl class="meta">
-        <div><dt>Area</dt><dd>Lower Mainland, BC</dd></div>
-        <div><dt>Posted</dt><dd>September 30, 2026</dd></div>
-        <div><dt>Type</dt><dd>Commercial work opportunity</dd></div>
-        <div><dt>Source</dt><dd>Facebook group “Cleaning Services in Vancouver, FraserValley” — Clean &amp; Co.</dd></div>
-      </dl>
-      <div class="links">
-        <a class="view-btn" href="https://facebook.com/groups/309371081333175/permalink/1424792613124344/" target="_blank" rel="noopener">View original post ↗</a>
-      </div>
-    </article>
-
-    <!-- 5 -->
-    <article class="card" data-category="business">
-      <div class="card-top">
-        <span class="type-badge business">Business opportunity</span>
-        <span class="posted">Posted September 29, 2026</span>
-      </div>
-      <h2>Cleaning subcontracts for sale</h2>
-      <p class="desc">Existing cleaning subcontracts offered for sale - a cleaning business could buy established client contracts. The same seller also posted this in other areas; only the most recent post is linked here to avoid duplicates.</p>
-      <dl class="meta">
-        <div><dt>Area</dt><dd>Burnaby / New Westminster · City of Vancouver · Tri-Cities / Pitt Meadows / Maple Ridge</dd></div>
-        <div><dt>Posted</dt><dd>September 29, 2026</dd></div>
-        <div><dt>Type</dt><dd>Business opportunity</dd></div>
-        <div><dt>Source</dt><dd>Craigslist Vancouver</dd></div>
-      </dl>
-      <div class="links">
-        <a class="view-btn" href="https://www.craigslist.org/view/d/langley-city-cleaning-subcontracts-for/69ymPENmrwW8cdxKjpsQFJ" target="_blank" rel="noopener">View original post ↗</a>
-      </div>
-    </article>
-
-    <!-- 6 -->
+    <!-- 2: Oct 23 -->
     <article class="card" data-category="client">
       <div class="card-top">
         <span class="type-badge client">Client request</span>
@@ -299,7 +224,7 @@
       </div>
     </article>
 
-    <!-- 7 -->
+    <!-- 3: Oct 22 -->
     <article class="card" data-category="subcontracting">
       <div class="card-top">
         <span class="type-badge">Subcontracting opportunity</span>
@@ -318,6 +243,204 @@
       </div>
     </article>
 
+    <!-- 4: Oct 21 -->
+    <article class="card" data-category="subcontracting">
+      <div class="card-top">
+        <span class="type-badge">Subcontracting opportunity</span>
+        <span class="posted">Posted October 21, 2026</span>
+      </div>
+      <h2>Cleaner wanted — apartment buildings in Richmond ($25/hr)</h2>
+      <p class="desc">Contractor position for common-area cleaning at two apartment buildings (14000 &amp; 14088 Riverport Way) in Richmond: 3.5 hours a day, 6 days a week, $25 per hour paid monthly. Requires own WorkSafeBC coverage and references. Verified live October 26, 2026.</p>
+      <dl class="meta">
+        <div><dt>Area</dt><dd>Richmond, BC</dd></div>
+        <div><dt>Posted</dt><dd>October 21, 2026</dd></div>
+        <div><dt>Type</dt><dd>Subcontracting opportunity</dd></div>
+        <div><dt>Source</dt><dd>Craigslist Vancouver</dd></div>
+      </dl>
+      <div class="links">
+        <a class="view-btn" href="https://www.craigslist.org/view/d/richmond-cleaner-wanted-apartment/rtAFK5Sn8yPymq5tU5qc25" target="_blank" rel="noopener">View original post ↗</a>
+      </div>
+    </article>
+
+    <!-- 5: Oct 18 -->
+    <article class="card" data-category="subcontracting">
+      <div class="card-top">
+        <span class="type-badge">Subcontracting opportunity</span>
+        <span class="posted">Posted October 18, 2026</span>
+      </div>
+      <h2>Independent cleaners wanted for Airbnb turnovers</h2>
+      <p class="desc">Nestoria Cleaning is looking for reliable, detail-oriented independent cleaners to handle Airbnb and short-term rental turnover cleanings in Vancouver. Contact them by direct message or at 778-907-6378 with your name, cleaning experience, availability, and preferred location.</p>
+      <dl class="meta">
+        <div><dt>Area</dt><dd>Vancouver, BC</dd></div>
+        <div><dt>Posted</dt><dd>October 18, 2026</dd></div>
+        <div><dt>Type</dt><dd>Subcontracting opportunity</dd></div>
+        <div><dt>Source</dt><dd>Facebook group “Professional House Cleaners in Vancouver” — Nestoria Cleaning</dd></div>
+      </dl>
+      <div class="links">
+        <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1752538189148275/" target="_blank" rel="noopener">View original post ↗</a>
+      </div>
+    </article>
+
+    <!-- 6: Oct 3, stale -->
+    <article class="card" data-category="client">
+      <div class="card-top">
+        <span class="type-badge client">Client request</span>
+        <span class="posted">Posted October 3, 2026</span>
+        <span class="stale">Possibly stale</span>
+      </div>
+      <h2>Deep clean wanted — 1-bedroom suite, steam cleaning</h2>
+      <p class="desc">Homeowner recently moved into a 1-bedroom suite and is looking for a deep clean including steam cleaning. They will provide the steam cleaner. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
+      <dl class="meta">
+        <div><dt>Area</dt><dd>Newton, Surrey, BC</dd></div>
+        <div><dt>Posted</dt><dd>October 3, 2026</dd></div>
+        <div><dt>Type</dt><dd>Client request</dd></div>
+        <div><dt>Source</dt><dd>Facebook group “Professional House Cleaners in Vancouver”</dd></div>
+      </dl>
+      <div class="links">
+        <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1738519193883508/" target="_blank" rel="noopener">View original post ↗</a>
+      </div>
+    </article>
+
+    <!-- 7: Sep 30, stale -->
+    <article class="card" data-category="subcontracting">
+      <div class="card-top">
+        <span class="type-badge">Commercial work opportunity</span>
+        <span class="posted">Posted September 30, 2026</span>
+        <span class="stale">Possibly stale</span>
+      </div>
+      <h2>Additional commercial cleaning work available</h2>
+      <p class="desc">Looking to connect with experienced independent cleaners or cleaning companies interested in taking on additional commercial cleaning work. Posted by Clean &amp; Co. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
+      <dl class="meta">
+        <div><dt>Area</dt><dd>Lower Mainland, BC</dd></div>
+        <div><dt>Posted</dt><dd>September 30, 2026</dd></div>
+        <div><dt>Type</dt><dd>Commercial work opportunity</dd></div>
+        <div><dt>Source</dt><dd>Facebook group “Cleaning Services in Vancouver, FraserValley” — Clean &amp; Co.</dd></div>
+      </dl>
+      <div class="links">
+        <a class="view-btn" href="https://facebook.com/groups/309371081333175/permalink/1424792613124344/" target="_blank" rel="noopener">View original post ↗</a>
+      </div>
+    </article>
+
+    <!-- 8: Sep 29, stale -->
+    <article class="card" data-category="business">
+      <div class="card-top">
+        <span class="type-badge business">Business opportunity</span>
+        <span class="posted">Posted September 29, 2026</span>
+        <span class="stale">Possibly stale</span>
+      </div>
+      <h2>Cleaning subcontracts for sale</h2>
+      <p class="desc">Existing cleaning subcontracts offered for sale - a cleaning business could buy established client contracts. The same seller also posted this in other areas; only the most recent post is linked here to avoid duplicates. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
+      <dl class="meta">
+        <div><dt>Area</dt><dd>Burnaby / New Westminster · City of Vancouver · Tri-Cities / Pitt Meadows / Maple Ridge</dd></div>
+        <div><dt>Posted</dt><dd>September 29, 2026</dd></div>
+        <div><dt>Type</dt><dd>Business opportunity</dd></div>
+        <div><dt>Source</dt><dd>Craigslist Vancouver</dd></div>
+      </dl>
+      <div class="links">
+        <a class="view-btn" href="https://www.craigslist.org/view/d/langley-city-cleaning-subcontracts-for/69ymPENmrwW8cdxKjpsQFJ" target="_blank" rel="noopener">View original post ↗</a>
+      </div>
+    </article>
+
+    <!-- 9: Sep 21, stale -->
+    <article class="card" data-category="subcontracting">
+      <div class="card-top">
+        <span class="type-badge">Subcontracting opportunity</span>
+        <span class="posted">Posted September 21, 2026</span>
+        <span class="stale">Possibly stale</span>
+      </div>
+      <h2>Independent cleaning subcontractors needed — Vancouver</h2>
+      <p class="desc">Timrach Cleaning Services, a registered cleaning business based in Abbotsford, is building a network of reliable independent cleaning subcontractors in Vancouver for residential cleaning opportunities as they become available. Requirements include residential cleaning experience, reliable transportation, own cleaning equipment and supplies, liability insurance, and references. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
+      <dl class="meta">
+        <div><dt>Area</dt><dd>Vancouver, BC</dd></div>
+        <div><dt>Posted</dt><dd>September 21, 2026</dd></div>
+        <div><dt>Type</dt><dd>Subcontracting opportunity</dd></div>
+        <div><dt>Source</dt><dd>Facebook group “Cleaning Services Vancouver &amp; Suburbs” — Timrach Cleaning Services</dd></div>
+      </dl>
+      <div class="links">
+        <a class="view-btn" href="https://facebook.com/groups/2091059191236785/permalink/2967677746908254/" target="_blank" rel="noopener">View original post ↗</a>
+      </div>
+    </article>
+
+    <!-- 10: Sep 10, stale -->
+    <article class="card" data-category="subcontracting">
+      <div class="card-top">
+        <span class="type-badge">Subcontracting partnership</span>
+        <span class="posted">Posted September 10, 2026</span>
+        <span class="stale">Possibly stale</span>
+      </div>
+      <h2>Vancouver subcontractor cleaning company / team wanted</h2>
+      <p class="desc">A Calgary-based cleaning company is looking to connect with a reliable Vancouver-area cleaning company or team to work with as a subcontractor. Posted by NewGen Cleaning Services. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
+      <dl class="meta">
+        <div><dt>Area</dt><dd>Vancouver Metropolitan Area, BC</dd></div>
+        <div><dt>Posted</dt><dd>September 10, 2026</dd></div>
+        <div><dt>Type</dt><dd>Subcontracting partnership</dd></div>
+        <div><dt>Source</dt><dd>Facebook group “Professional House Cleaners in Vancouver” — NewGen Cleaning Services (Calgary-based)</dd></div>
+      </dl>
+      <div class="links">
+        <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1718505875884840/" target="_blank" rel="noopener">View original post ↗</a>
+      </div>
+    </article>
+
+    <!-- 11: Sep 2, stale -->
+    <article class="card" data-category="business">
+      <div class="card-top">
+        <span class="type-badge business">Business opportunity</span>
+        <span class="posted">Posted September 2, 2026</span>
+        <span class="stale">Possibly stale</span>
+      </div>
+      <h2>Free 60 days: review marketing help for 2 cleaning businesses</h2>
+      <p class="desc">Review Revenue is launching and looking for 2 cleaning businesses to work with free for 60 days, helping them get more 5-star Google reviews, stand out against local competitors, and turn their online reputation into more bookings. Note: posted September 2 with a 60-day free window, so confirm a spot is still open before spending time on it.</p>
+      <dl class="meta">
+        <div><dt>Area</dt><dd>Vancouver area, BC</dd></div>
+        <div><dt>Posted</dt><dd>September 2, 2026</dd></div>
+        <div><dt>Type</dt><dd>Business opportunity</dd></div>
+        <div><dt>Source</dt><dd>Facebook group “Cleaning Services Vancouver &amp; Suburbs” — Review Revenue</dd></div>
+      </dl>
+      <div class="links">
+        <a class="view-btn" href="https://facebook.com/groups/2091059191236785/permalink/2948699572139405/" target="_blank" rel="noopener">View original post ↗</a>
+      </div>
+    </article>
+
+    <!-- 12: Aug 26, stale -->
+    <article class="card" data-category="subcontracting">
+      <div class="card-top">
+        <span class="type-badge">Subcontracting opportunity</span>
+        <span class="posted">Posted August 26, 2026</span>
+        <span class="stale">Possibly stale</span>
+      </div>
+      <h2>Cleaning contractor wanted — 2 to 3 days a week</h2>
+      <p class="desc">Lemon Bee is looking for a reliable cleaning contractor, approximately 2 to 3 days of work per week mostly in the morning, with cash payment at the end of each shift and a commitment of at least 6 months. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
+      <dl class="meta">
+        <div><dt>Area</dt><dd>Vancouver area, BC</dd></div>
+        <div><dt>Posted</dt><dd>August 26, 2026</dd></div>
+        <div><dt>Type</dt><dd>Subcontracting opportunity</dd></div>
+        <div><dt>Source</dt><dd>Facebook group “Cleaning Services Vancouver &amp; Suburbs” — Lemon Bee</dd></div>
+      </dl>
+      <div class="links">
+        <a class="view-btn" href="https://facebook.com/groups/2091059191236785/permalink/2942212532788109/" target="_blank" rel="noopener">View original post ↗</a>
+      </div>
+    </article>
+
+    <!-- 13: Aug 21, stale -->
+    <article class="card" data-category="subcontracting">
+      <div class="card-top">
+        <span class="type-badge">Subcontracting opportunity</span>
+        <span class="posted">Posted August 21, 2026</span>
+        <span class="stale">Possibly stale</span>
+      </div>
+      <h2>Independent cleaners network — Surrey and area</h2>
+      <p class="desc">The Clean Club is building a network of independent cleaners in Surrey and surrounding areas to pick up residential cleaning jobs as they come in, one-time and recurring, accepting jobs based on availability. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
+      <dl class="meta">
+        <div><dt>Area</dt><dd>Surrey and surrounding areas, BC</dd></div>
+        <div><dt>Posted</dt><dd>August 21, 2026</dd></div>
+        <div><dt>Type</dt><dd>Subcontracting opportunity</dd></div>
+        <div><dt>Source</dt><dd>Facebook group “Professional House Cleaners in Vancouver” — The Clean Club</dd></div>
+      </dl>
+      <div class="links">
+        <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1701999700868791/" target="_blank" rel="noopener">View original post ↗</a>
+      </div>
+    </article>
+
     <div class="empty hidden" id="emptyState">No opportunities match this filter.</div>
 
   </main>
@@ -325,7 +448,7 @@
   <footer>
     <p><strong>How to use this board:</strong> open the original post and reply to the poster there — Facebook group posts may require joining the group first. This board does not take applications, bookings, or payments.</p>
     <p><strong>Disclaimer:</strong> Listings are shared for information only. This board is not affiliated with the posters and does not verify or guarantee availability, accuracy, or terms. Please confirm details with the original poster before contacting them or paying anything.</p>
-    <p>Sources checked for this snapshot: Facebook cleaning groups for Vancouver and the Fraser Valley, and Craigslist Vancouver. Snapshot verified October 25, 2026. Update October 26, 2026: 2 Craigslist listings added and verified live that day.</p>
+    <p>Sources checked: Facebook cleaning groups for Vancouver and the Fraser Valley, and Craigslist Vancouver. Snapshot verified October 25, 2026. Full backfill October 26, 2026: 6 more listings added (5 from Facebook, 1 from Craigslist and verified live that day), all cards sorted newest first, posts over 2 weeks old marked as possibly stale. Refreshed daily.</p>
   </footer>
 
 </div>
