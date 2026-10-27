@@ -8,22 +8,23 @@
 <title>Vancouver Cleaning Opportunity Board</title>
 <style>
   :root{
-    --bg:#edf1ee;
-    --surface:#ffffff;
-    --surface-2:#f3f6f4;
+    /* finesse · product · sage · low spectacle · high density */
+    --bg:#eef0ec;
+    --surface:#fbfcfa;
+    --surface-2:#e8ece6;
     --ink:#18211c;
     --muted:#5c6b62;
     --faint:#849188;
-    --border:#d3ddd6;
+    --border:rgba(24,33,28,.14);
     --accent:#0d6347;
     --accent-hover:#084f38;
-    --accent-ink:#ffffff;
+    --accent-ink:#fbfcfa;
     --chip-bg:#e3ece6;
     --chip-ink:#244034;
     --warn-bg:#fdf3d7;
     --warn-border:#e6cf8a;
     --warn-ink:#5c4b12;
-    --shadow:0 1px 2px rgba(20,40,30,.06), 0 8px 24px rgba(20,40,30,.06);
+    --shadow:0 1px 3px rgba(24,33,28,.05);
   }
   @media (prefers-color-scheme: dark){
     :root{
@@ -33,7 +34,7 @@
       --ink:#eaf1ec;
       --muted:#a7b6ab;
       --faint:#7e8f84;
-      --border:#303d35;
+      --border:rgba(234,241,236,.16);
       --accent:#3ec08f;
       --accent-hover:#5ed1a6;
       --accent-ink:#0b1a13;
@@ -42,11 +43,12 @@
       --warn-bg:#332b10;
       --warn-border:#6b5c22;
       --warn-ink:#f0df9a;
-      --shadow:0 1px 2px rgba(0,0,0,.35), 0 8px 24px rgba(0,0,0,.25);
+      --shadow:0 1px 3px rgba(0,0,0,.25);
     }
   }
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
+  h1,h2{overflow-wrap:anywhere}
   body{
     margin:0;
     background:var(--bg);
@@ -59,14 +61,14 @@
   .wrap{max-width:880px;margin:0 auto;padding:28px 18px 56px}
 
   /* Header */
-  header{padding:10px 0 22px;border-bottom:3px solid var(--ink)}
+  header{padding:8px 0 16px;border-bottom:3px solid var(--ink)}
   .kicker{
     font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
     color:var(--accent);margin:0 0 10px;
   }
   h1{
     font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
-    font-weight:700;font-size:clamp(2rem,6vw,3.1rem);line-height:1.05;letter-spacing:-.01em;
+    font-weight:800;font-size:clamp(1.7rem,5vw,2.4rem);line-height:1.05;letter-spacing:-.02em;text-wrap:balance;letter-spacing:-.01em;
     margin:0 0 14px;
   }
   .lede{font-size:1.08rem;color:var(--ink);margin:0 0 10px;max-width:62ch}
@@ -81,31 +83,31 @@
 
   /* Snapshot notice */
   .notice{
-    margin:20px 0 0;background:var(--warn-bg);border:1px solid var(--warn-border);
-    color:var(--warn-ink);border-radius:10px;padding:13px 15px;font-size:.92rem;
+    margin:14px 0 0;background:var(--warn-bg);border:1px solid var(--warn-border);
+    color:var(--warn-ink);border-radius:10px;padding:10px 13px;font-size:.9rem;
   }
   .notice strong{font-weight:700}
 
   /* Filters */
   .filters{
     position:sticky;top:0;z-index:5;
-    background:var(--bg);padding:18px 0 12px;margin-top:6px;
+    background:var(--bg);padding:12px 0 10px;margin-top:4px;border-bottom:1px solid var(--border);
   }
   .filters-label{font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin:0 0 9px}
   .filter-row{display:flex;flex-wrap:wrap;gap:8px}
   .filter-btn{
     appearance:none;border:1px solid var(--border);background:var(--surface);color:var(--ink);
-    font:inherit;font-size:.92rem;font-weight:600;padding:9px 15px;border-radius:999px;cursor:pointer;
+    font:inherit;font-size:.92rem;font-weight:600;padding:11px 16px;border-radius:14px;cursor:pointer;
   }
   .filter-btn:hover{border-color:var(--accent)}
-  .filter-btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+  .filter-btn:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(13,99,71,.28)}
   .filter-btn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
-  .count-line{color:var(--muted);font-size:.9rem;margin:12px 0 0}
+  .count-line{color:var(--muted);font-size:.9rem;margin:12px 0 0;font-variant-numeric:tabular-nums}
 
   /* Cards */
   .board{display:flex;flex-direction:column;gap:16px;margin-top:8px}
   .card{
-    background:var(--surface);border:1px solid var(--border);border-radius:14px;
+    background:var(--surface);border:1px solid var(--border);border-radius:20px;
     padding:20px 20px 18px;box-shadow:var(--shadow);
   }
   .card-top{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:10px}
@@ -121,23 +123,19 @@
   .stale{color:var(--warn-ink);background:var(--warn-bg);border:1px solid var(--warn-border);font-size:.74rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border-radius:6px}
   .card h2{
     font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
-    font-size:1.42rem;line-height:1.2;font-weight:700;margin:0 0 8px;
+    font-size:1.25rem;line-height:1.25;font-weight:800;letter-spacing:-.01em;text-wrap:balance;margin:0 0 6px;
   }
-  .desc{margin:0 0 16px;color:var(--ink);max-width:68ch}
-  .meta{
-    display:grid;grid-template-columns:1fr 1fr;gap:10px 20px;
-    background:var(--surface-2);border-radius:10px;padding:12px 14px;margin:0 0 16px;
-  }
-  .meta dt{font-size:.72rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);margin:0 0 2px}
-  .meta dd{margin:0;font-size:.93rem;font-weight:600}
-  @media (max-width:560px){ .meta{grid-template-columns:1fr} }
+  .desc{margin:0 0 12px;color:var(--ink);max-width:68ch}
+  .meta-line{margin:0 0 14px;color:var(--muted);font-size:.9rem}
+  .meta-line .meta-area{font-weight:700;color:var(--ink)}
+  .card:has(.stale){box-shadow:none}
   .links{display:flex;flex-wrap:wrap;gap:10px}
   .view-btn{
     display:inline-block;text-decoration:none;font-weight:700;font-size:.94rem;
-    background:var(--accent);color:var(--accent-ink);padding:10px 16px;border-radius:9px;
+    background:var(--accent);color:var(--accent-ink);padding:12px 18px;border-radius:14px;
   }
   .view-btn:hover{background:var(--accent-hover)}
-  .view-btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+  .view-btn:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(13,99,71,.28)}
   .view-btn.secondary{background:transparent;color:var(--accent);border:1.5px solid var(--accent)}
   .view-btn.secondary:hover{background:var(--surface-2)}
   .hidden{display:none !important}
@@ -150,12 +148,31 @@
   .topbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:0 0 14px}
   .lang-toggle{display:flex;gap:6px;align-items:center}
   .lang-label{font-size:.8rem;font-weight:700;letter-spacing:.06em;color:var(--muted);margin-right:2px}
-  .lang-btn{appearance:none;border:1px solid var(--border);background:var(--surface);color:var(--ink);font:inherit;font-size:.9rem;font-weight:700;padding:7px 14px;border-radius:999px;cursor:pointer}
+  .lang-btn{appearance:none;border:1px solid var(--border);background:var(--surface);color:var(--ink);font:inherit;font-size:.9rem;font-weight:700;padding:9px 16px;border-radius:14px;cursor:pointer}
   .lang-btn:hover{border-color:var(--accent)}
-  .lang-btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+  .lang-btn:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(13,99,71,.28)}
   .lang-btn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
-  .alerts-note{font-size:.85rem;font-weight:700;color:var(--accent);border:1.5px solid var(--accent);border-radius:999px;padding:6px 12px;text-align:center}
+  .alerts-note{font-size:.85rem;font-weight:700;color:var(--accent);text-decoration:none;border:1px solid var(--accent);border-radius:14px;padding:6px 12px;text-align:center}
   @media (max-width:560px){ .alerts-note{font-size:.82rem} }
+  .search-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:10px}
+  .search-input{flex:1 1 240px;appearance:none;border:1px solid var(--border);background:var(--surface);color:var(--ink);font:inherit;font-size:.95rem;padding:11px 16px;border-radius:14px}
+  .search-input:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(13,99,71,.28)}
+  .fresh-label{display:flex;gap:7px;align-items:center;font-size:.92rem;font-weight:600;cursor:pointer}
+  .fresh-label input{width:18px;height:18px;accent-color:var(--accent)}
+  @media (max-width:560px){ .view-btn{width:100%;text-align:center} }
+  .signup,.contact{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:20px;box-shadow:var(--shadow);margin-top:16px}
+  .signup h2,.contact h2{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;font-size:1.35rem;line-height:1.25;font-weight:800;margin:0 0 8px}
+  .signup p,.contact p{margin:0 0 14px;color:var(--muted)}
+  .form-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  .form-input{flex:1 1 240px;appearance:none;border:1px solid var(--border);background:var(--surface);color:var(--ink);font:inherit;font-size:.95rem;padding:11px 16px;border-radius:14px}
+  .form-input:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(13,99,71,.28)}
+  .form-btn{appearance:none;border:none;background:var(--accent);color:var(--accent-ink);font:inherit;font-weight:700;font-size:.95rem;padding:12px 18px;border-radius:14px;cursor:pointer}
+  .consent{display:flex;gap:8px;align-items:flex-start;font-size:.88rem;color:var(--muted);margin-top:12px}
+  .consent input{width:18px;height:18px;accent-color:var(--accent);flex-shrink:0}
+  .form-note{font-size:.85rem;color:var(--muted);margin-top:10px}
+  .form-confirm{margin-top:12px;font-weight:700;color:var(--accent)}
+  .contact-form{display:grid;gap:10px;margin-top:14px}
+  .contact-form textarea{min-height:110px;resize:vertical}
   footer{margin-top:36px;border-top:1px solid var(--border);padding-top:18px;color:var(--muted);font-size:.9rem}
   footer p{margin:0 0 8px}
   @media (prefers-reduced-motion: no-preference){
@@ -174,13 +191,13 @@
       <button type="button" class="lang-btn" id="langEn" aria-pressed="true">English</button>
       <button type="button" class="lang-btn" id="langZh" aria-pressed="false">中文</button>
     </div>
-    <span class="alerts-note" id="alertsNote" data-en="Daily alerts — coming soon" data-zh="每日提醒 — 即将推出">Daily alerts — coming soon</span>
+    <a class="alerts-note" id="alertsNote" href="#alerts" data-en="Listing alerts coming soon" data-zh="商机提醒即将推出">Listing alerts coming soon</a>
   </div>
 
   <header>
     <p class="kicker" data-en="Vancouver &amp; Lower Mainland · Cleaning businesses only" data-zh="温哥华及低陆平原 · 仅面向清洁企业">Vancouver &amp; Lower Mainland · Cleaning businesses only</p>
     <h1 data-en="Vancouver Cleaning Opportunity Board" data-zh="温哥华清洁商机板">Vancouver Cleaning Opportunity Board</h1>
-    <p class="lede" data-en-html="<strong>Opportunities for cleaning businesses — not a job board for employees.</strong> Every listing below is a real post found on Facebook groups or Craigslist: a client asking for cleaning, a company looking for a subcontractor, or cleaning contracts offered for sale." data-zh-html="<strong>面向清洁企业的商机——不是招工板。</strong>下面每条信息都来自 Facebook 群组或 Craigslist 上的真实帖子：客户找清洁服务、公司找分包商，或出售中的清洁合同。"><strong>Opportunities for cleaning businesses — not a job board for employees.</strong> Every listing below is a real post found on Facebook groups or Craigslist: a client asking for cleaning, a company looking for a subcontractor, or cleaning contracts offered for sale.</p>
+    <p class="lede" data-en-html="<strong>Opportunities for cleaning businesses, not a job board for employees.</strong> Every listing below is a real post found on Facebook groups or Craigslist: a client asking for cleaning, a company looking for a subcontractor, or cleaning contracts offered for sale." data-zh-html="<strong>面向清洁企业的商机，不是招工板。</strong>下面每条信息都来自 Facebook 群组或 Craigslist 上的真实帖子：客户找清洁服务、公司找分包商，或出售中的清洁合同。"><strong>Opportunities for cleaning businesses, not a job board for employees.</strong> Every listing below is a real post found on Facebook groups or Craigslist: a client asking for cleaning, a company looking for a subcontractor, or cleaning contracts offered for sale.</p>
     <p class="sub" data-en-html="Vancouver area only. No employment ads hiring individual cleaners, no companies advertising their own services, and no Canada-wide tender lists. Each card links straight to the original post so you can reply to the poster directly. Listings are newest first; posts over 2 weeks old are marked as possibly stale." data-zh-html="仅限温哥华地区。不含招聘个人清洁工的广告、不含公司自我宣传、不含全加拿大招标清单。每张卡片都直接链接到原始帖子，方便你直接回复发帖人。按最新发布排序；超过 2 周的帖子会标注为可能已过期。">Vancouver area only. No employment ads hiring individual cleaners, no companies advertising their own services, and no Canada-wide tender lists. Each card links straight to the original post so you can reply to the poster directly. Listings are newest first; posts over 2 weeks old are marked as possibly stale.</p>
     <div class="scope-row" aria-label="Board scope">
       <span class="scope" data-en="📍 Vancouver / Lower Mainland only" data-zh="📍 仅限温哥华 / 低陆平原">📍 Vancouver / Lower Mainland only</span>
@@ -203,7 +220,26 @@
       <button type="button" class="filter-btn" data-filter="subcontracting" aria-pressed="false" data-en="Subcontracting (9)" data-zh="分包合作 (9)">Subcontracting (9)</button>
       <button type="button" class="filter-btn" data-filter="business" aria-pressed="false" data-en="Business opportunity (2)" data-zh="商业机会 (2)">Business opportunity (2)</button>
     </div>
+    <div class="search-row">
+      <input type="search" class="search-input" id="searchInput" placeholder="Search listings, areas, or keywords" data-en-placeholder="Search listings, areas, or keywords" data-zh-placeholder="搜索商机、地区或关键词" aria-label="Search listings" />
+      <label class="fresh-label"><input type="checkbox" id="freshOnly" /> <span data-en="Fresh only" data-zh="仅显示新鲜信息">Fresh only</span></label>
+    </div>
     <p class="count-line" id="countLine" aria-live="polite">Showing 23 of 23 opportunities</p>
+  </section>
+
+
+  <section class="signup" id="alerts" aria-label="New listing alerts">
+    <h2 data-en="Join the waitlist for new listing alerts" data-zh="加入最新商机提醒等候名单">Join the waitlist for new listing alerts</h2>
+    <p data-en="Alerts are coming soon. Join the waitlist and we will let you know when alerts launch. No daily empty emails, and you can unsubscribe anytime." data-zh="提醒功能即将推出。加入等候名单，功能上线时我们会通知你。没有新信息时不会发空邮件，你可以随时退订。">Alerts are coming soon. Join the waitlist and we will let you know when alerts launch. No daily empty emails, and you can unsubscribe anytime.</p>
+    <form class="signup-form" id="signupForm" action="#" method="post">
+      <div class="form-row">
+        <input type="email" class="form-input" name="email" required placeholder="Your email address" data-en-placeholder="Your email address" data-zh-placeholder="你的邮箱地址" aria-label="Email address" />
+        <button type="submit" class="form-btn" data-en="Join the waitlist" data-zh="加入等候名单">Join the waitlist</button>
+      </div>
+      <label class="consent"><input type="checkbox" name="consent" required /> <span data-en="Yes, let me know when new cleaning opportunity alerts launch. I understand I can unsubscribe anytime." data-zh="是的，提醒功能上线时请通知我。我了解自己可以随时退订。">Yes, send me new cleaning opportunity alerts. I understand I can unsubscribe anytime.</span></label>
+      <p class="form-note" data-en="We will only use your email for these alerts. We will not share it or sell it." data-zh="你的邮箱仅用于这些提醒。我们不会分享或出售它。">We will only use your email for these alerts. We will not share it or sell it.</p>
+      <p class="form-confirm hidden" id="signupConfirm" data-en="Thanks! You are on the waitlist. We will let you know when alerts launch." data-zh="谢谢！你已加入等候名单。提醒功能上线时我们会通知你。">Thanks! This is a draft preview, no email was saved yet. Connect a form backend before publishing.</p>
+    </form>
   </section>
 
   <main class="board" id="board">
@@ -216,12 +252,7 @@
       </div>
       <h2 data-en="Carpet cleaner wanted — 1-bedroom apartment, max $100" data-zh="招地毯清洁工——一居室公寓，最高 $100">Carpet cleaner wanted — 1-bedroom apartment, max $100</h2>
       <p class="desc" data-en="Looking for a carpet cleaner for a 1-bedroom small apartment, maximum $100." data-zh="为一居室小公寓找地毯清洁工，预算最高 $100。">Looking for a carpet cleaner for a 1-bedroom small apartment, maximum $100.</p>
-      <dl class="meta">
-        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Vancouver area (area not specified in post)" data-zh="温哥华地区（帖子未注明具体区域） (Vancouver area)">Vancouver area (area not specified in post)</dd></div>
-        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="October 24, 2026" data-zh="2026年10月24日">October 24, 2026</dd></div>
-        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Client request" data-zh="客户需求">Client request</dd></div>
-        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Cleaning Services Vancouver &amp; Suburbs”" data-zh="Facebook 群组 “Cleaning Services Vancouver &amp; Suburbs”">Facebook group “Cleaning Services Vancouver &amp; Suburbs”</dd></div>
-      </dl>
+      <p class="meta-line"><span class="meta-area" data-en="Vancouver area (area not specified in post)" data-zh="温哥华地区（帖子未注明具体区域） (Vancouver area)">Vancouver area (area not specified in post)</span> · <span data-en="Facebook group “Cleaning Services Vancouver &amp; Suburbs”" data-zh="Facebook 群组 “Cleaning Services Vancouver &amp; Suburbs”">Facebook group “Cleaning Services Vancouver &amp; Suburbs”</span></p>
       <div class="links">
         <a class="view-btn" href="https://facebook.com/groups/2091059191236785/permalink/3004430249899670/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
@@ -235,12 +266,7 @@
       </div>
       <h2 data-en="Cleaning subcontractors wanted for residential jobs" data-zh="住宅清洁分包商招募">Cleaning subcontractors wanted for residential jobs</h2>
       <p class="desc" data-en="Property care firm looking for reliable, experienced cleaning subcontractors for residential jobs. Flexible opportunities — accept jobs as you are available. Posted by Zenviva Property Care Inc." data-zh="物业管理公司招募可靠、有经验的住宅清洁分包商，时间灵活——有空时接单即可。发帖方：Zenviva Property Care Inc.">Property care firm looking for reliable, experienced cleaning subcontractors for residential jobs. Flexible opportunities — accept jobs as you are available. Posted by Zenviva Property Care Inc.</p>
-      <dl class="meta">
-        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Tri-Cities (Coquitlam, Port Coquitlam, Port Moody), BC" data-zh="三联市（高贵林、高贵林港、穆迪港），BC (Tri-Cities (Coquitlam, Port Coquitlam, Port Moody), BC)">Tri-Cities (Coquitlam, Port Coquitlam, Port Moody), BC</dd></div>
-        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="October 23, 2026" data-zh="2026年10月23日">October 23, 2026</dd></div>
-        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Subcontracting opportunity" data-zh="分包合作机会">Subcontracting opportunity</dd></div>
-        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Cleaning Services in Vancouver, FraserValley” — Zenviva Property Care Inc." data-zh="Facebook 群组 “Cleaning Services in Vancouver, FraserValley” — Zenviva Property Care Inc.">Facebook group “Cleaning Services in Vancouver, FraserValley” — Zenviva Property Care Inc.</dd></div>
-      </dl>
+      <p class="meta-line"><span class="meta-area" data-en="Tri-Cities (Coquitlam, Port Coquitlam, Port Moody), BC" data-zh="三联市（高贵林、高贵林港、穆迪港），BC (Tri-Cities (Coquitlam, Port Coquitlam, Port Moody), BC)">Tri-Cities (Coquitlam, Port Coquitlam, Port Moody), BC</span> · <span data-en="Facebook group “Cleaning Services in Vancouver, FraserValley” — Zenviva Property Care Inc." data-zh="Facebook 群组 “Cleaning Services in Vancouver, FraserValley” — Zenviva Property Care Inc.">Facebook group “Cleaning Services in Vancouver, FraserValley” — Zenviva Property Care Inc.</span></p>
       <div class="links">
         <a class="view-btn" href="https://facebook.com/groups/309371081333175/permalink/1445811801022425/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
@@ -254,12 +280,7 @@
       </div>
       <h2 data-en="Professional cleaner needed - 2-bedroom apartment, twice a week" data-zh="招专业清洁工——两居室公寓，每周两次">Professional cleaner needed - 2-bedroom apartment, twice a week</h2>
       <p class="desc" data-en="Individual client in North Vancouver looking for an experienced cleaner for a 2-bedroom apartment twice a week. Duties are vacuuming, mopping, and cleaning bathrooms. Shifts are 5 hours, supplies are provided by the client, and pay is $25 per hour cash paid the same day. Note: the first cleaning was listed as the day after the October 23 posting, so confirm the ongoing schedule in the original post." data-zh="北温哥华个人客户招有经验的清洁工，服务两居室公寓，每周两次。工作包括吸尘、拖地和清洁浴室；每次 5 小时，客户提供清洁用品，时薪 $25，现金当日结清。注意：首次清洁列在 10 月 23 日发帖后的第二天，请在原始帖子中确认后续排班。">Individual client in North Vancouver looking for an experienced cleaner for a 2-bedroom apartment twice a week. Duties are vacuuming, mopping, and cleaning bathrooms. Shifts are 5 hours, supplies are provided by the client, and pay is $25 per hour cash paid the same day. Note: the first cleaning was listed as the day after the October 23 posting, so confirm the ongoing schedule in the original post.</p>
-      <dl class="meta">
-        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="North Vancouver, BC" data-zh="北温哥华，BC (North Vancouver, BC)">North Vancouver, BC</dd></div>
-        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="October 23, 2026" data-zh="2026年10月23日">October 23, 2026</dd></div>
-        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Client request" data-zh="客户需求">Client request</dd></div>
-        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Craigslist Vancouver" data-zh="Craigslist Vancouver">Craigslist Vancouver</dd></div>
-      </dl>
+      <p class="meta-line"><span class="meta-area" data-en="North Vancouver, BC" data-zh="北温哥华，BC (North Vancouver, BC)">North Vancouver, BC</span> · <span data-en="Craigslist Vancouver" data-zh="Craigslist Vancouver">Craigslist Vancouver</span></p>
       <div class="links">
         <a class="view-btn" href="https://www.craigslist.org/view/d/north-vancouver-professional-cleaner/mpzC77ZQuM8qcEt9qQvqhf" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
@@ -273,12 +294,7 @@
       </div>
       <h2 data-en="Cleaners wanted - Metro Vancouver, Surrey and Langley" data-zh="招清洁工——大温哥华、素里和兰里">Cleaners wanted - Metro Vancouver, Surrey and Langley</h2>
       <p class="desc" data-en="Harbourline Home Cleaning is offering residential cleaning jobs on a paid-per-job basis, with a set fee agreed before the cleaner accepts. Cleaners choose the jobs they want and bring their own supplies, equipment, and transportation. Note: the post does not use the words employee or subcontractor; this listing is included based on its per-job, choose-your-jobs model." data-zh="Harbourline Home Cleaning 按单结算提供住宅清洁工作，费用在接单前商定。清洁工自选工作，自带清洁用品、设备和交通工具。注意：帖子未使用“雇员”或“分包商”字眼；因其按单、自选工作的模式而收录。">Harbourline Home Cleaning is offering residential cleaning jobs on a paid-per-job basis, with a set fee agreed before the cleaner accepts. Cleaners choose the jobs they want and bring their own supplies, equipment, and transportation. Note: the post does not use the words employee or subcontractor; this listing is included based on its per-job, choose-your-jobs model.</p>
-      <dl class="meta">
-        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Metro Vancouver, Surrey and Langley, BC" data-zh="大温哥华、素里和兰里，BC (Metro Vancouver, Surrey and Langley, BC)">Metro Vancouver, Surrey and Langley, BC</dd></div>
-        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="October 22, 2026" data-zh="2026年10月22日">October 22, 2026</dd></div>
-        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Subcontracting opportunity" data-zh="分包合作机会">Subcontracting opportunity</dd></div>
-        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Craigslist Vancouver - Harbourline Home Cleaning" data-zh="Craigslist Vancouver — Harbourline Home Cleaning">Craigslist Vancouver - Harbourline Home Cleaning</dd></div>
-      </dl>
+      <p class="meta-line"><span class="meta-area" data-en="Metro Vancouver, Surrey and Langley, BC" data-zh="大温哥华、素里和兰里，BC (Metro Vancouver, Surrey and Langley, BC)">Metro Vancouver, Surrey and Langley, BC</span> · <span data-en="Craigslist Vancouver - Harbourline Home Cleaning" data-zh="Craigslist Vancouver — Harbourline Home Cleaning">Craigslist Vancouver - Harbourline Home Cleaning</span></p>
       <div class="links">
         <a class="view-btn" href="https://www.craigslist.org/view/d/surrey-outer-northwest-cleaners-wanted/uhSjAw1abHds3erogDuWh8" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
@@ -292,12 +308,7 @@
       </div>
       <h2 data-en="Cleaner wanted — apartment buildings in Richmond ($25/hr)" data-zh="招清洁工——列治文公寓楼（$25/小时）">Cleaner wanted — apartment buildings in Richmond ($25/hr)</h2>
       <p class="desc" data-en="Contractor position for common-area cleaning at two apartment buildings (14000 &amp; 14088 Riverport Way) in Richmond: 3.5 hours a day, 6 days a week, $25 per hour paid monthly. Requires own WorkSafeBC coverage and references. Verified live October 26, 2026." data-zh="承包岗位，负责列治文两栋公寓楼（14000 及 14088 Riverport Way）的公共区域清洁：每天 3.5 小时，每周 6 天，时薪 $25，按月支付。需自备 WorkSafeBC 保险并提供推荐人。已于 2026年10月26日核实有效。">Contractor position for common-area cleaning at two apartment buildings (14000 &amp; 14088 Riverport Way) in Richmond: 3.5 hours a day, 6 days a week, $25 per hour paid monthly. Requires own WorkSafeBC coverage and references. Verified live October 26, 2026.</p>
-      <dl class="meta">
-        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Richmond, BC" data-zh="列治文，BC (Richmond, BC)">Richmond, BC</dd></div>
-        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="October 21, 2026" data-zh="2026年10月21日">October 21, 2026</dd></div>
-        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Subcontracting opportunity" data-zh="分包合作机会">Subcontracting opportunity</dd></div>
-        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Craigslist Vancouver" data-zh="Craigslist Vancouver">Craigslist Vancouver</dd></div>
-      </dl>
+      <p class="meta-line"><span class="meta-area" data-en="Richmond, BC" data-zh="列治文，BC (Richmond, BC)">Richmond, BC</span> · <span data-en="Craigslist Vancouver" data-zh="Craigslist Vancouver">Craigslist Vancouver</span></p>
       <div class="links">
         <a class="view-btn" href="https://www.craigslist.org/view/d/richmond-cleaner-wanted-apartment/rtAFK5Sn8yPymq5tU5qc25" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
@@ -311,12 +322,7 @@
       </div>
       <h2 data-en="Independent cleaners wanted for Airbnb turnovers" data-zh="招独立清洁工——Airbnb 换房清洁">Independent cleaners wanted for Airbnb turnovers</h2>
       <p class="desc" data-en="Nestoria Cleaning is looking for reliable, detail-oriented independent cleaners to handle Airbnb and short-term rental turnover cleanings in Vancouver. Contact them by direct message or at 778-907-6378 with your name, cleaning experience, availability, and preferred location." data-zh="Nestoria Cleaning 招募可靠、细心的独立清洁工，负责温哥华 Airbnb 及短租换房清洁。请私信联系，或致电 778-907-6378，并提供姓名、清洁经验、可工作时间和偏好区域。">Nestoria Cleaning is looking for reliable, detail-oriented independent cleaners to handle Airbnb and short-term rental turnover cleanings in Vancouver. Contact them by direct message or at 778-907-6378 with your name, cleaning experience, availability, and preferred location.</p>
-      <dl class="meta">
-        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Vancouver, BC" data-zh="温哥华，BC (Vancouver, BC)">Vancouver, BC</dd></div>
-        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="October 18, 2026" data-zh="2026年10月18日">October 18, 2026</dd></div>
-        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Subcontracting opportunity" data-zh="分包合作机会">Subcontracting opportunity</dd></div>
-        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Professional House Cleaners in Vancouver” — Nestoria Cleaning" data-zh="Facebook 群组 “Professional House Cleaners in Vancouver” — Nestoria Cleaning">Facebook group “Professional House Cleaners in Vancouver” — Nestoria Cleaning</dd></div>
-      </dl>
+      <p class="meta-line"><span class="meta-area" data-en="Vancouver, BC" data-zh="温哥华，BC (Vancouver, BC)">Vancouver, BC</span> · <span data-en="Facebook group “Professional House Cleaners in Vancouver” — Nestoria Cleaning" data-zh="Facebook 群组 “Professional House Cleaners in Vancouver” — Nestoria Cleaning">Facebook group “Professional House Cleaners in Vancouver” — Nestoria Cleaning</span></p>
       <div class="links">
         <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1752538189148275/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
@@ -330,12 +336,7 @@
       </div>
       <h2 data-en="Monthly maintenance cleaning wanted — South Surrey home" data-zh="招每月定期清洁——南素里住宅">Monthly maintenance cleaning wanted — South Surrey home</h2>
       <p class="desc" data-en="Home in South Surrey needs a monthly maintenance cleaning. Soil level is usually light, with occasional guests the house is cleaned for." data-zh="南素里一处住宅需要每月一次定期清洁。平时污垢较轻，偶尔为接待客人而清洁。">Home in South Surrey needs a monthly maintenance cleaning. Soil level is usually light, with occasional guests the house is cleaned for.</p>
-      <dl class="meta">
-        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="South Surrey, BC" data-zh="南素里，BC (South Surrey, BC)">South Surrey, BC</dd></div>
-        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="October 15, 2026" data-zh="2026年10月15日">October 15, 2026</dd></div>
-        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Client request" data-zh="客户需求">Client request</dd></div>
-        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Cleaning Services in Vancouver, FraserValley”" data-zh="Facebook 群组 “Cleaning Services in Vancouver, FraserValley”">Facebook group “Cleaning Services in Vancouver, FraserValley”</dd></div>
-      </dl>
+      <p class="meta-line"><span class="meta-area" data-en="South Surrey, BC" data-zh="南素里，BC (South Surrey, BC)">South Surrey, BC</span> · <span data-en="Facebook group “Cleaning Services in Vancouver, FraserValley”" data-zh="Facebook 群组 “Cleaning Services in Vancouver, FraserValley”">Facebook group “Cleaning Services in Vancouver, FraserValley”</span></p>
       <div class="links">
         <a class="view-btn" href="https://facebook.com/groups/309371081333175/permalink/1438610241742581/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
@@ -350,12 +351,7 @@
       </div>
       <h2 data-en="Deep clean wanted — 1-bedroom suite, steam cleaning" data-zh="招深度清洁——一居室套房，需蒸汽清洁">Deep clean wanted — 1-bedroom suite, steam cleaning</h2>
       <p class="desc" data-en="Homeowner recently moved into a 1-bedroom suite and is looking for a deep clean including steam cleaning. They will provide the steam cleaner. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it." data-zh="屋主刚搬入一居室套房，找深度清洁（含蒸汽清洁），屋主提供蒸汽清洁机。注意：发布已超过 2 周，花时间之前请先确认是否仍然有效。">Homeowner recently moved into a 1-bedroom suite and is looking for a deep clean including steam cleaning. They will provide the steam cleaner. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
-      <dl class="meta">
-        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Newton, Surrey, BC" data-zh="素里牛顿区，BC (Newton, Surrey, BC)">Newton, Surrey, BC</dd></div>
-        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="October 3, 2026" data-zh="2026年10月3日">October 3, 2026</dd></div>
-        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Client request" data-zh="客户需求">Client request</dd></div>
-        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Professional House Cleaners in Vancouver”" data-zh="Facebook 群组 “Professional House Cleaners in Vancouver”">Facebook group “Professional House Cleaners in Vancouver”</dd></div>
-      </dl>
+      <p class="meta-line"><span class="meta-area" data-en="Newton, Surrey, BC" data-zh="素里牛顿区，BC (Newton, Surrey, BC)">Newton, Surrey, BC</span> · <span data-en="Facebook group “Professional House Cleaners in Vancouver”" data-zh="Facebook 群组 “Professional House Cleaners in Vancouver”">Facebook group “Professional House Cleaners in Vancouver”</span></p>
       <div class="links">
         <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1738519193883508/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
@@ -370,12 +366,7 @@
       </div>
       <h2 data-en="Additional commercial cleaning work available" data-zh="有额外商业清洁工作机会">Additional commercial cleaning work available</h2>
       <p class="desc" data-en="Looking to connect with experienced independent cleaners or cleaning companies interested in taking on additional commercial cleaning work. Posted by Clean &amp; Co. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it." data-zh="希望联系有经验的独立清洁工或清洁公司，承接额外商业清洁工作。发帖方：Clean &amp; Co.。注意：发布已超过 2 周，花时间之前请先确认是否仍然有效。">Looking to connect with experienced independent cleaners or cleaning companies interested in taking on additional commercial cleaning work. Posted by Clean &amp; Co. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
-      <dl class="meta">
-        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Lower Mainland, BC" data-zh="低陆平原，BC (Lower Mainland, BC)">Lower Mainland, BC</dd></div>
-        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="September 30, 2026" data-zh="2026年9月30日">September 30, 2026</dd></div>
-        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Commercial work opportunity" data-zh="商业清洁工作机会">Commercial work opportunity</dd></div>
-        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Cleaning Services in Vancouver, FraserValley” — Clean &amp; Co." data-zh="Facebook 群组 “Cleaning Services in Vancouver, FraserValley” — Clean &amp; Co.">Facebook group “Cleaning Services in Vancouver, FraserValley” — Clean &amp; Co.</dd></div>
-      </dl>
+      <p class="meta-line"><span class="meta-area" data-en="Lower Mainland, BC" data-zh="低陆平原，BC (Lower Mainland, BC)">Lower Mainland, BC</span> · <span data-en="Facebook group “Cleaning Services in Vancouver, FraserValley” — Clean &amp; Co." data-zh="Facebook 群组 “Cleaning Services in Vancouver, FraserValley” — Clean &amp; Co.">Facebook group “Cleaning Services in Vancouver, FraserValley” — Clean &amp; Co.</span></p>
       <div class="links">
         <a class="view-btn" href="https://facebook.com/groups/309371081333175/permalink/1424792613124344/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
@@ -390,12 +381,7 @@
       </div>
       <h2 data-en="Cleaning subcontracts for sale" data-zh="清洁分包合同出售">Cleaning subcontracts for sale</h2>
       <p class="desc" data-en="Existing cleaning subcontracts offered for sale - a cleaning business could buy established client contracts. The same seller also posted this in other areas; only the most recent post is linked here to avoid duplicates. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it." data-zh="现有清洁分包合同出售——清洁企业可购买已建立的客户合同。同一卖家也在其他地区发布过；为避免重复，这里只链接最新一条。注意：发布已超过 2 周，花时间之前请先确认是否仍然有效。">Existing cleaning subcontracts offered for sale - a cleaning business could buy established client contracts. The same seller also posted this in other areas; only the most recent post is linked here to avoid duplicates. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
-      <dl class="meta">
-        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Burnaby / New Westminster · City of Vancouver · Tri-Cities / Pitt Meadows / Maple Ridge" data-zh="本拿比 / 新西敏 · 温哥华市 · 三联市 / 匹特草原 / 枫树岭 (Burnaby / New Westminster · City of Vancouver · Tri-Cities / Pitt Meadows / Maple Ridge)">Burnaby / New Westminster · City of Vancouver · Tri-Cities / Pitt Meadows / Maple Ridge</dd></div>
-        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="September 29, 2026" data-zh="2026年9月29日">September 29, 2026</dd></div>
-        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Business opportunity" data-zh="商业机会">Business opportunity</dd></div>
-        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Craigslist Vancouver" data-zh="Craigslist Vancouver">Craigslist Vancouver</dd></div>
-      </dl>
+      <p class="meta-line"><span class="meta-area" data-en="Burnaby / New Westminster · City of Vancouver · Tri-Cities / Pitt Meadows / Maple Ridge" data-zh="本拿比 / 新西敏 · 温哥华市 · 三联市 / 匹特草原 / 枫树岭 (Burnaby / New Westminster · City of Vancouver · Tri-Cities / Pitt Meadows / Maple Ridge)">Burnaby / New Westminster · City of Vancouver · Tri-Cities / Pitt Meadows / Maple Ridge</span> · <span data-en="Craigslist Vancouver" data-zh="Craigslist Vancouver">Craigslist Vancouver</span></p>
       <div class="links">
         <a class="view-btn" href="https://www.craigslist.org/view/d/langley-city-cleaning-subcontracts-for/69ymPENmrwW8cdxKjpsQFJ" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
@@ -410,12 +396,7 @@
       </div>
       <h2 data-en="Independent cleaning subcontractors needed — Vancouver" data-zh="招独立清洁分包商——温哥华">Independent cleaning subcontractors needed — Vancouver</h2>
       <p class="desc" data-en="Timrach Cleaning Services, a registered cleaning business based in Abbotsford, is building a network of reliable independent cleaning subcontractors in Vancouver for residential cleaning opportunities as they become available. Requirements include residential cleaning experience, reliable transportation, own cleaning equipment and supplies, liability insurance, and references. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it." data-zh="Timrach Cleaning Services 是一家注册于阿伯茨福德的清洁企业，正在温哥华为陆续出现的住宅清洁机会组建可靠的独立清洁分包商网络。要求包括住宅清洁经验、可靠交通工具、自备清洁设备和用品、责任保险及推荐人。注意：发布已超过 2 周，花时间之前请先确认是否仍然有效。">Timrach Cleaning Services, a registered cleaning business based in Abbotsford, is building a network of reliable independent cleaning subcontractors in Vancouver for residential cleaning opportunities as they become available. Requirements include residential cleaning experience, reliable transportation, own cleaning equipment and supplies, liability insurance, and references. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
-      <dl class="meta">
-        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Vancouver, BC" data-zh="温哥华，BC (Vancouver, BC)">Vancouver, BC</dd></div>
-        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="September 21, 2026" data-zh="2026年9月21日">September 21, 2026</dd></div>
-        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Subcontracting opportunity" data-zh="分包合作机会">Subcontracting opportunity</dd></div>
-        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Cleaning Services Vancouver &amp; Suburbs” — Timrach Cleaning Services" data-zh="Facebook 群组 “Cleaning Services Vancouver &amp; Suburbs” — Timrach Cleaning Services">Facebook group “Cleaning Services Vancouver &amp; Suburbs” — Timrach Cleaning Services</dd></div>
-      </dl>
+      <p class="meta-line"><span class="meta-area" data-en="Vancouver, BC" data-zh="温哥华，BC (Vancouver, BC)">Vancouver, BC</span> · <span data-en="Facebook group “Cleaning Services Vancouver &amp; Suburbs” — Timrach Cleaning Services" data-zh="Facebook 群组 “Cleaning Services Vancouver &amp; Suburbs” — Timrach Cleaning Services">Facebook group “Cleaning Services Vancouver &amp; Suburbs” — Timrach Cleaning Services</span></p>
       <div class="links">
         <a class="view-btn" href="https://facebook.com/groups/2091059191236785/permalink/2967677746908254/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
@@ -430,12 +411,7 @@
       </div>
       <h2 data-en="House cleaner recommendation wanted — Metro Vancouver, $25/hr" data-zh="求推荐 house cleaner——大温哥华，$25/小时">House cleaner recommendation wanted — Metro Vancouver, $25/hr</h2>
       <p class="desc" data-en="Asking for recommendations for a good house cleaner in the Metro Vancouver area, paying $25 per hour. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it." data-zh="求推荐大温哥华地区的好 house cleaner，时薪 $25。注意：发布已超过 2 周，花时间之前请先确认是否仍然有效。">Asking for recommendations for a good house cleaner in the Metro Vancouver area, paying $25 per hour. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
-      <dl class="meta">
-        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Metro Vancouver, BC" data-zh="大温哥华，BC (Metro Vancouver, BC)">Metro Vancouver, BC</dd></div>
-        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="September 16, 2026" data-zh="2026年9月16日">September 16, 2026</dd></div>
-        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Client request" data-zh="客户需求">Client request</dd></div>
-        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Professional House Cleaners in Vancouver”" data-zh="Facebook 群组 “Professional House Cleaners in Vancouver”">Facebook group “Professional House Cleaners in Vancouver”</dd></div>
-      </dl>
+      <p class="meta-line"><span class="meta-area" data-en="Metro Vancouver, BC" data-zh="大温哥华，BC (Metro Vancouver, BC)">Metro Vancouver, BC</span> · <span data-en="Facebook group “Professional House Cleaners in Vancouver”" data-zh="Facebook 群组 “Professional House Cleaners in Vancouver”">Facebook group “Professional House Cleaners in Vancouver”</span></p>
       <div class="links">
         <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1723414148727346/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
@@ -450,12 +426,7 @@
       </div>
       <h2 data-en="Vancouver subcontractor cleaning company / team wanted" data-zh="招温哥华分包清洁公司 / 团队">Vancouver subcontractor cleaning company / team wanted</h2>
       <p class="desc" data-en="A Calgary-based cleaning company is looking to connect with a reliable Vancouver-area cleaning company or team to work with as a subcontractor. Posted by NewGen Cleaning Services. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it." data-zh="一家卡尔加里清洁公司希望联系可靠的温哥华地区清洁公司或团队，作为分包商合作。发帖方：NewGen Cleaning Services。注意：发布已超过 2 周，花时间之前请先确认是否仍然有效。">A Calgary-based cleaning company is looking to connect with a reliable Vancouver-area cleaning company or team to work with as a subcontractor. Posted by NewGen Cleaning Services. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
-      <dl class="meta">
-        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Vancouver Metropolitan Area, BC" data-zh="温哥华都会区，BC (Vancouver Metropolitan Area, BC)">Vancouver Metropolitan Area, BC</dd></div>
-        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="September 10, 2026" data-zh="2026年9月10日">September 10, 2026</dd></div>
-        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Subcontracting partnership" data-zh="分包合作">Subcontracting partnership</dd></div>
-        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Professional House Cleaners in Vancouver” — NewGen Cleaning Services (Calgary-based)" data-zh="Facebook 群组 “Professional House Cleaners in Vancouver” — NewGen Cleaning Services（卡尔加里）">Facebook group “Professional House Cleaners in Vancouver” — NewGen Cleaning Services (Calgary-based)</dd></div>
-      </dl>
+      <p class="meta-line"><span class="meta-area" data-en="Vancouver Metropolitan Area, BC" data-zh="温哥华都会区，BC (Vancouver Metropolitan Area, BC)">Vancouver Metropolitan Area, BC</span> · <span data-en="Facebook group “Professional House Cleaners in Vancouver” — NewGen Cleaning Services (Calgary-based)" data-zh="Facebook 群组 “Professional House Cleaners in Vancouver” — NewGen Cleaning Services（卡尔加里）">Facebook group “Professional House Cleaners in Vancouver” — NewGen Cleaning Services (Calgary-based)</span></p>
       <div class="links">
         <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1718505875884840/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
@@ -470,12 +441,7 @@
       </div>
       <h2 data-en="Family help wanted twice a week — cleaning and laundry" data-zh="招家庭帮手，每周两次——清洁与洗衣">Family help wanted twice a week — cleaning and laundry</h2>
       <p class="desc" data-en="Family looking for someone to help twice a week with cleaning and laundry and keeping the household together. Two self-employed adults and a two-year-old. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it." data-zh="一户家庭招人每周两次帮忙清洁、洗衣和打理家务。家庭成员为两位自雇成年人和一名两岁幼儿。注意：发布已超过 2 周，花时间之前请先确认是否仍然有效。">Family looking for someone to help twice a week with cleaning and laundry and keeping the household together. Two self-employed adults and a two-year-old. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
-      <dl class="meta">
-        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Vancouver area (area not specified in post)" data-zh="温哥华地区（帖子未注明具体区域） (Vancouver area)">Vancouver area (area not specified in post)</dd></div>
-        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="September 9, 2026" data-zh="2026年9月9日">September 9, 2026</dd></div>
-        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Client request" data-zh="客户需求">Client request</dd></div>
-        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Professional House Cleaners in Vancouver”" data-zh="Facebook 群组 “Professional House Cleaners in Vancouver”">Facebook group “Professional House Cleaners in Vancouver”</dd></div>
-      </dl>
+      <p class="meta-line"><span class="meta-area" data-en="Vancouver area (area not specified in post)" data-zh="温哥华地区（帖子未注明具体区域） (Vancouver area)">Vancouver area (area not specified in post)</span> · <span data-en="Facebook group “Professional House Cleaners in Vancouver”" data-zh="Facebook 群组 “Professional House Cleaners in Vancouver”">Facebook group “Professional House Cleaners in Vancouver”</span></p>
       <div class="links">
         <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1717776529291108/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
@@ -490,12 +456,7 @@
       </div>
       <h2 data-en="Cleaner wanted — Burnaby Deer Lake area" data-zh="招清洁工——本拿比鹿湖区">Cleaner wanted — Burnaby Deer Lake area</h2>
       <p class="desc" data-en="Looking for a cleaner in the Burnaby Deer Lake area. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it." data-zh="招本拿比鹿湖区清洁工。注意：发布已超过 2 周，花时间之前请先确认是否仍然有效。">Looking for a cleaner in the Burnaby Deer Lake area. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
-      <dl class="meta">
-        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Burnaby (Deer Lake), BC" data-zh="本拿比（鹿湖），BC (Burnaby (Deer Lake), BC)">Burnaby (Deer Lake), BC</dd></div>
-        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="September 4, 2026" data-zh="2026年9月4日">September 4, 2026</dd></div>
-        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Client request" data-zh="客户需求">Client request</dd></div>
-        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Cleaning Services Vancouver &amp; Suburbs”" data-zh="Facebook 群组 “Cleaning Services Vancouver &amp; Suburbs”">Facebook group “Cleaning Services Vancouver &amp; Suburbs”</dd></div>
-      </dl>
+      <p class="meta-line"><span class="meta-area" data-en="Burnaby (Deer Lake), BC" data-zh="本拿比（鹿湖），BC (Burnaby (Deer Lake), BC)">Burnaby (Deer Lake), BC</span> · <span data-en="Facebook group “Cleaning Services Vancouver &amp; Suburbs”" data-zh="Facebook 群组 “Cleaning Services Vancouver &amp; Suburbs”">Facebook group “Cleaning Services Vancouver &amp; Suburbs”</span></p>
       <div class="links">
         <a class="view-btn" href="https://facebook.com/groups/2091059191236785/permalink/2950823388593690/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
@@ -510,12 +471,7 @@
       </div>
       <h2 data-en="Cleaner wanted — Kitsilano area" data-zh="招清洁工——基斯兰奴区">Cleaner wanted — Kitsilano area</h2>
       <p class="desc" data-en="Looking for a cleaner in Vancouver, around the Kitsilano area. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it." data-zh="招温哥华基斯兰奴区附近清洁工。注意：发布已超过 2 周，花时间之前请先确认是否仍然有效。">Looking for a cleaner in Vancouver, around the Kitsilano area. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
-      <dl class="meta">
-        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Vancouver (Kitsilano), BC" data-zh="温哥华（基斯兰奴），BC (Vancouver (Kitsilano), BC)">Vancouver (Kitsilano), BC</dd></div>
-        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="September 3, 2026" data-zh="2026年9月3日">September 3, 2026</dd></div>
-        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Client request" data-zh="客户需求">Client request</dd></div>
-        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Cleaning Services Vancouver &amp; Suburbs”" data-zh="Facebook 群组 “Cleaning Services Vancouver &amp; Suburbs”">Facebook group “Cleaning Services Vancouver &amp; Suburbs”</dd></div>
-      </dl>
+      <p class="meta-line"><span class="meta-area" data-en="Vancouver (Kitsilano), BC" data-zh="温哥华（基斯兰奴），BC (Vancouver (Kitsilano), BC)">Vancouver (Kitsilano), BC</span> · <span data-en="Facebook group “Cleaning Services Vancouver &amp; Suburbs”" data-zh="Facebook 群组 “Cleaning Services Vancouver &amp; Suburbs”">Facebook group “Cleaning Services Vancouver &amp; Suburbs”</span></p>
       <div class="links">
         <a class="view-btn" href="https://facebook.com/groups/2091059191236785/permalink/2950187398657289/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
@@ -530,12 +486,7 @@
       </div>
       <h2 data-en="Free 60 days: review marketing help for 2 cleaning businesses" data-zh="免费 60 天：为 2 家清洁企业提供评价营销帮助">Free 60 days: review marketing help for 2 cleaning businesses</h2>
       <p class="desc" data-en="Review Revenue is launching and looking for 2 cleaning businesses to work with free for 60 days, helping them get more 5-star Google reviews, stand out against local competitors, and turn their online reputation into more bookings. Note: posted September 2 with a 60-day free window, so confirm a spot is still open before spending time on it." data-zh="Review Revenue 正在起步，招募 2 家清洁企业免费合作 60 天，帮助获得更多 Google 五星评价、在本地竞争中脱颖而出，并把线上口碑转化为更多订单。注意：该帖发布于 9 月 2 日，免费期为 60 天，花时间之前请先确认名额是否仍在。">Review Revenue is launching and looking for 2 cleaning businesses to work with free for 60 days, helping them get more 5-star Google reviews, stand out against local competitors, and turn their online reputation into more bookings. Note: posted September 2 with a 60-day free window, so confirm a spot is still open before spending time on it.</p>
-      <dl class="meta">
-        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Vancouver area, BC" data-zh="温哥华地区，BC (Vancouver area, BC)">Vancouver area, BC</dd></div>
-        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="September 2, 2026" data-zh="2026年9月2日">September 2, 2026</dd></div>
-        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Business opportunity" data-zh="商业机会">Business opportunity</dd></div>
-        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Cleaning Services Vancouver &amp; Suburbs” — Review Revenue" data-zh="Facebook 群组 “Cleaning Services Vancouver &amp; Suburbs” — Review Revenue">Facebook group “Cleaning Services Vancouver &amp; Suburbs” — Review Revenue</dd></div>
-      </dl>
+      <p class="meta-line"><span class="meta-area" data-en="Vancouver area, BC" data-zh="温哥华地区，BC (Vancouver area, BC)">Vancouver area, BC</span> · <span data-en="Facebook group “Cleaning Services Vancouver &amp; Suburbs” — Review Revenue" data-zh="Facebook 群组 “Cleaning Services Vancouver &amp; Suburbs” — Review Revenue">Facebook group “Cleaning Services Vancouver &amp; Suburbs” — Review Revenue</span></p>
       <div class="links">
         <a class="view-btn" href="https://facebook.com/groups/2091059191236785/permalink/2948699572139405/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
@@ -550,12 +501,7 @@
       </div>
       <h2 data-en="Deep clean wanted — small downtown studio" data-zh="招深度清洁——市中心小 studio">Deep clean wanted — small downtown studio</h2>
       <p class="desc" data-en="Looking for a deep clean of a small downtown Vancouver studio apartment, 380 sq ft. Poster asked for quotes in the thread or by DM. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it." data-zh="招深度清洁温哥华市中心一间 380 平方英尺的小 studio 公寓。发帖人请有意者在帖子下或私信报价。注意：发布已超过 2 周，花时间之前请先确认是否仍然有效。">Looking for a deep clean of a small downtown Vancouver studio apartment, 380 sq ft. Poster asked for quotes in the thread or by DM. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
-      <dl class="meta">
-        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Downtown Vancouver, BC" data-zh="温哥华市中心，BC (Downtown Vancouver, BC)">Downtown Vancouver, BC</dd></div>
-        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="August 29, 2026" data-zh="2026年8月29日">August 29, 2026</dd></div>
-        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Client request" data-zh="客户需求">Client request</dd></div>
-        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Professional House Cleaners in Vancouver”" data-zh="Facebook 群组 “Professional House Cleaners in Vancouver”">Facebook group “Professional House Cleaners in Vancouver”</dd></div>
-      </dl>
+      <p class="meta-line"><span class="meta-area" data-en="Downtown Vancouver, BC" data-zh="温哥华市中心，BC (Downtown Vancouver, BC)">Downtown Vancouver, BC</span> · <span data-en="Facebook group “Professional House Cleaners in Vancouver”" data-zh="Facebook 群组 “Professional House Cleaners in Vancouver”">Facebook group “Professional House Cleaners in Vancouver”</span></p>
       <div class="links">
         <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1708327946902633/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
@@ -570,12 +516,7 @@
       </div>
       <h2 data-en="Cleaning contractor wanted — 2 to 3 days a week" data-zh="招清洁承包商——每周 2 至 3 天">Cleaning contractor wanted — 2 to 3 days a week</h2>
       <p class="desc" data-en="Lemon Bee is looking for a reliable cleaning contractor, approximately 2 to 3 days of work per week mostly in the morning, with cash payment at the end of each shift and a commitment of at least 6 months. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it." data-zh="Lemon Bee 招可靠清洁承包商，每周约 2 至 3 天，多为上午工作，每班结束时现金结算，至少合作 6 个月。注意：发布已超过 2 周，花时间之前请先确认是否仍然有效。">Lemon Bee is looking for a reliable cleaning contractor, approximately 2 to 3 days of work per week mostly in the morning, with cash payment at the end of each shift and a commitment of at least 6 months. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
-      <dl class="meta">
-        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Vancouver area, BC" data-zh="温哥华地区，BC (Vancouver area, BC)">Vancouver area, BC</dd></div>
-        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="August 26, 2026" data-zh="2026年8月26日">August 26, 2026</dd></div>
-        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Subcontracting opportunity" data-zh="分包合作机会">Subcontracting opportunity</dd></div>
-        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Cleaning Services Vancouver &amp; Suburbs” — Lemon Bee" data-zh="Facebook 群组 “Cleaning Services Vancouver &amp; Suburbs” — Lemon Bee">Facebook group “Cleaning Services Vancouver &amp; Suburbs” — Lemon Bee</dd></div>
-      </dl>
+      <p class="meta-line"><span class="meta-area" data-en="Vancouver area, BC" data-zh="温哥华地区，BC (Vancouver area, BC)">Vancouver area, BC</span> · <span data-en="Facebook group “Cleaning Services Vancouver &amp; Suburbs” — Lemon Bee" data-zh="Facebook 群组 “Cleaning Services Vancouver &amp; Suburbs” — Lemon Bee">Facebook group “Cleaning Services Vancouver &amp; Suburbs” — Lemon Bee</span></p>
       <div class="links">
         <a class="view-btn" href="https://facebook.com/groups/2091059191236785/permalink/2942212532788109/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
@@ -590,12 +531,7 @@
       </div>
       <h2 data-en="Independent cleaners network — Surrey and area" data-zh="独立清洁工网络——素里及周边">Independent cleaners network — Surrey and area</h2>
       <p class="desc" data-en="The Clean Club is building a network of independent cleaners in Surrey and surrounding areas to pick up residential cleaning jobs as they come in, one-time and recurring, accepting jobs based on availability. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it." data-zh="The Clean Club 正在素里及周边地区组建独立清洁工网络，按出现顺序承接住宅清洁工作（一次性或定期），按个人时间接单。注意：发布已超过 2 周，花时间之前请先确认是否仍然有效。">The Clean Club is building a network of independent cleaners in Surrey and surrounding areas to pick up residential cleaning jobs as they come in, one-time and recurring, accepting jobs based on availability. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
-      <dl class="meta">
-        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Surrey and surrounding areas, BC" data-zh="素里及周边地区，BC (Surrey and surrounding areas, BC)">Surrey and surrounding areas, BC</dd></div>
-        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="August 21, 2026" data-zh="2026年8月21日">August 21, 2026</dd></div>
-        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Subcontracting opportunity" data-zh="分包合作机会">Subcontracting opportunity</dd></div>
-        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Professional House Cleaners in Vancouver” — The Clean Club" data-zh="Facebook 群组 “Professional House Cleaners in Vancouver” — The Clean Club">Facebook group “Professional House Cleaners in Vancouver” — The Clean Club</dd></div>
-      </dl>
+      <p class="meta-line"><span class="meta-area" data-en="Surrey and surrounding areas, BC" data-zh="素里及周边地区，BC (Surrey and surrounding areas, BC)">Surrey and surrounding areas, BC</span> · <span data-en="Facebook group “Professional House Cleaners in Vancouver” — The Clean Club" data-zh="Facebook 群组 “Professional House Cleaners in Vancouver” — The Clean Club">Facebook group “Professional House Cleaners in Vancouver” — The Clean Club</span></p>
       <div class="links">
         <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1701999700868791/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
@@ -610,12 +546,7 @@
       </div>
       <h2 data-en="Back-up cleaner wanted — waterfront Airbnb, West Vancouver" data-zh="招备用清洁工——西温哥华海滨 Airbnb">Back-up cleaner wanted — waterfront Airbnb, West Vancouver</h2>
       <p class="desc" data-en="Looking for a back-up cleaner for a waterfront Airbnb in West Vancouver, just north of Horseshoe Bay. Garbage and recycling removal and cleaning of the BBQ must be included. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it." data-zh="招西温哥华海滨 Airbnb（马蹄湾以北不远）的备用清洁工，须包括倒垃圾和可回收物以及清洁烧烤架。注意：发布已超过 2 周，花时间之前请先确认是否仍然有效。">Looking for a back-up cleaner for a waterfront Airbnb in West Vancouver, just north of Horseshoe Bay. Garbage and recycling removal and cleaning of the BBQ must be included. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
-      <dl class="meta">
-        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="West Vancouver, BC" data-zh="西温哥华，BC (West Vancouver, BC)">West Vancouver, BC</dd></div>
-        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="July 28, 2026" data-zh="2026年7月28日">July 28, 2026</dd></div>
-        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Client request" data-zh="客户需求">Client request</dd></div>
-        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Professional House Cleaners in Vancouver”" data-zh="Facebook 群组 “Professional House Cleaners in Vancouver”">Facebook group “Professional House Cleaners in Vancouver”</dd></div>
-      </dl>
+      <p class="meta-line"><span class="meta-area" data-en="West Vancouver, BC" data-zh="西温哥华，BC (West Vancouver, BC)">West Vancouver, BC</span> · <span data-en="Facebook group “Professional House Cleaners in Vancouver”" data-zh="Facebook 群组 “Professional House Cleaners in Vancouver”">Facebook group “Professional House Cleaners in Vancouver”</span></p>
       <div class="links">
         <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1681689019566526/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
@@ -630,12 +561,7 @@
       </div>
       <h2 data-en="Cleaner wanted for two bathrooms, once or twice a month — Burnaby" data-zh="招清洁工，每月一两次清洁两个浴室——本拿比">Cleaner wanted for two bathrooms, once or twice a month — Burnaby</h2>
       <p class="desc" data-en="Couple looking for a cleaner mainly to clean their two bathrooms once or twice a month, in Burnaby. They prefer someone who has rates readily available. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it." data-zh="一对夫妇招清洁工，主要每月一两次清洁本拿比家中的两个浴室。他们希望对方能直接提供收费标准。注意：发布已超过 2 周，花时间之前请先确认是否仍然有效。">Couple looking for a cleaner mainly to clean their two bathrooms once or twice a month, in Burnaby. They prefer someone who has rates readily available. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
-      <dl class="meta">
-        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Burnaby, BC" data-zh="本拿比，BC (Burnaby, BC)">Burnaby, BC</dd></div>
-        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="July 25, 2026" data-zh="2026年7月25日">July 25, 2026</dd></div>
-        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Client request" data-zh="客户需求">Client request</dd></div>
-        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Professional House Cleaners in Vancouver”" data-zh="Facebook 群组 “Professional House Cleaners in Vancouver”">Facebook group “Professional House Cleaners in Vancouver”</dd></div>
-      </dl>
+      <p class="meta-line"><span class="meta-area" data-en="Burnaby, BC" data-zh="本拿比，BC (Burnaby, BC)">Burnaby, BC</span> · <span data-en="Facebook group “Professional House Cleaners in Vancouver”" data-zh="Facebook 群组 “Professional House Cleaners in Vancouver”">Facebook group “Professional House Cleaners in Vancouver”</span></p>
       <div class="links">
         <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1679181629817265/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
@@ -650,44 +576,72 @@
       </div>
       <h2 data-en="Reliable cleaner wanted — property in Central Burnaby" data-zh="招可靠清洁工——本拿比中部物业">Reliable cleaner wanted — property in Central Burnaby</h2>
       <p class="desc" data-en="Looking for a reliable cleaner for a property in Central Burnaby. A basic clean for a few to several hours. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it." data-zh="招可靠清洁工，服务本拿比中部一处物业；基础清洁，几小时不等。注意：发布已超过 2 周，花时间之前请先确认是否仍然有效。">Looking for a reliable cleaner for a property in Central Burnaby. A basic clean for a few to several hours. Note: posted over 2 weeks ago, so confirm it is still open before spending time on it.</p>
-      <dl class="meta">
-        <div><dt data-en="Area" data-zh="地区">Area</dt><dd data-en="Central Burnaby, BC" data-zh="本拿比中部，BC (Central Burnaby, BC)">Central Burnaby, BC</dd></div>
-        <div><dt data-en="Posted" data-zh="发布日期">Posted</dt><dd data-en="July 19, 2026" data-zh="2026年7月19日">July 19, 2026</dd></div>
-        <div><dt data-en="Type" data-zh="类型">Type</dt><dd data-en="Client request" data-zh="客户需求">Client request</dd></div>
-        <div><dt data-en="Source" data-zh="来源">Source</dt><dd data-en="Facebook group “Professional House Cleaners in Vancouver”" data-zh="Facebook 群组 “Professional House Cleaners in Vancouver”">Facebook group “Professional House Cleaners in Vancouver”</dd></div>
-      </dl>
+      <p class="meta-line"><span class="meta-area" data-en="Central Burnaby, BC" data-zh="本拿比中部，BC (Central Burnaby, BC)">Central Burnaby, BC</span> · <span data-en="Facebook group “Professional House Cleaners in Vancouver”" data-zh="Facebook 群组 “Professional House Cleaners in Vancouver”">Facebook group “Professional House Cleaners in Vancouver”</span></p>
       <div class="links">
         <a class="view-btn" href="https://facebook.com/groups/485163362552437/permalink/1674840876918007/" target="_blank" rel="noopener" data-en="View original post ↗" data-zh="查看原始帖子 ↗">View original post ↗</a>
       </div>
     </article>
 
-    <div class="empty hidden" id="emptyState" data-en="No opportunities match this filter." data-zh="没有符合该筛选条件的商机。">No opportunities match this filter.</div>
+    <div class="empty hidden" id="emptyState" data-en-clear="Clear search" data-zh-clear="清除搜索" data-en="No opportunities match this filter." data-zh="没有符合该筛选条件的商机。">No opportunities match this filter.</div>
 
   </main>
+
+
+  <section class="contact" id="contact" aria-label="Help for cleaning businesses">
+    <h2 data-en="For cleaning businesses: want a website or AI help?" data-zh="面向清洁企业：想要网站或 AI 帮助吗？">For cleaning businesses: want a website or AI help?</h2>
+    <p data-en="If you want more customers, a simple website, online bookings, a Google Business Profile, or AI help with quotes, messages, and follow-ups, reach out. Tell us what you need and we will reply with next steps." data-zh="如果你想要更多客户、一个简单的网站、在线预订、Google 商家资料，或者用 AI 帮助处理报价、消息和跟进，请联系我们。告诉我们你的需求，我们会回复下一步。">If you want more customers, a simple website, online bookings, a Google Business Profile, or AI help with quotes, messages, and follow-ups, reach out. Tell us what you need and we will reply with next steps.</p>
+    <div class="scope-row" aria-label="Services">
+      <span class="scope" data-en="Website" data-zh="网站">Website</span>
+      <span class="scope" data-en="Online bookings" data-zh="在线预订">Online bookings</span>
+      <span class="scope" data-en="Google Business Profile" data-zh="Google 商家资料">Google Business Profile</span>
+      <span class="scope" data-en="AI help for your business" data-zh="企业 AI 帮助">AI help for your business</span>
+    </div>
+    <form class="contact-form" id="contactForm" action="#" method="post">
+      <input type="text" class="form-input" name="name" required placeholder="Your name" data-en-placeholder="Your name" data-zh-placeholder="你的姓名" aria-label="Your name" />
+      <input type="text" class="form-input" name="business" placeholder="Your business name (optional)" data-en-placeholder="Your business name (optional)" data-zh-placeholder="你的企业名称（可选）" aria-label="Business name" />
+      <input type="email" class="form-input" name="email" required placeholder="Your email address" data-en-placeholder="Your email address" data-zh-placeholder="你的邮箱地址" aria-label="Email address" />
+      <textarea class="form-input" name="message" required placeholder="What do you need help with?" data-en-placeholder="What do you need help with?" data-zh-placeholder="你需要什么帮助？"></textarea>
+      <div><button type="submit" class="form-btn" data-en="Send message" data-zh="发送消息">Send message</button></div>
+      <p class="form-confirm hidden" id="contactConfirm" data-en="Thanks! Your message was sent." data-zh="谢谢！你的消息已发送。">Thanks! This is a draft preview, no message was sent yet. Connect a form backend before publishing.</p>
+    </form>
+  </section>
 
   <footer>
     <p data-en-html="<strong>How to use this board:</strong> open the original post and reply to the poster there — Facebook group posts may require joining the group first. This board does not take applications, bookings, or payments." data-zh-html="<strong>如何使用本公告板：</strong>打开原始帖子并在那里直接回复发帖人——Facebook 群组帖子可能需要先加入群组。本公告板不接受申请、预订或付款。"><strong>How to use this board:</strong> open the original post and reply to the poster there — Facebook group posts may require joining the group first. This board does not take applications, bookings, or payments.</p>
     <p data-en-html="<strong>Disclaimer:</strong> Listings are shared for information only. This board is not affiliated with the posters and does not verify or guarantee availability, accuracy, or terms. Please confirm details with the original poster before contacting them or paying anything." data-zh-html="<strong>免责声明：</strong>信息仅供参考。本公告板与发帖人无关，不核实也不保证信息的有效性、准确性或条款。联系发帖人或付款前请先与原始发帖人确认详情。"><strong>Disclaimer:</strong> Listings are shared for information only. This board is not affiliated with the posters and does not verify or guarantee availability, accuracy, or terms. Please confirm details with the original poster before contacting them or paying anything.</p>
-    <p data-en-html="Sources checked: Facebook cleaning groups for Vancouver and the Fraser Valley, and Craigslist Vancouver. Snapshot verified October 25, 2026. Full backfill October 26, 2026: 6 more listings added (5 from Facebook, 1 from Craigslist and verified live that day), all cards sorted newest first, posts over 2 weeks old marked as possibly stale. Refreshed daily." data-zh-html="信息来源：温哥华及菲沙河谷的 Facebook 清洁群组和 Craigslist Vancouver。快照核实于 2026年10月25日。2026年10月26日完整补录：新增 6 条信息（5 条来自 Facebook，1 条来自 Craigslist 并于当日核实有效），所有卡片按最新排序，超过 2 周的帖子标注为可能已过期。每天更新。">Sources checked: Facebook cleaning groups for Vancouver and the Fraser Valley, and Craigslist Vancouver. Snapshot verified October 25, 2026. Full backfill October 26, 2026: 6 more listings added (5 from Facebook, 1 from Craigslist and verified live that day), all cards sorted newest first, posts over 2 weeks old marked as possibly stale. Refreshed daily.</p>
+    <p data-en-html="Sources: Facebook, Craigslist, Kijiji, RedNote, and similar places where cleaning opportunities are posted. All cards are sorted newest first; posts over 2 weeks old are marked as possibly stale. Refreshed daily." data-zh-html="信息来源：Facebook、Craigslist、Kijiji、小红书 (RedNote) 等发布清洁商机的平台。所有卡片按最新排序；超过 2 周的帖子标注为可能已过期。每天更新。">Sources: Facebook, Craigslist, Kijiji, RedNote, and similar places where cleaning opportunities are posted. All cards are sorted newest first; posts over 2 weeks old are marked as possibly stale. Refreshed daily.</p>
   </footer>
 
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
   (function () {
     var buttons = Array.prototype.slice.call(document.querySelectorAll('.filter-btn'));
     var cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
     var countLine = document.getElementById('countLine');
     var emptyState = document.getElementById('emptyState');
+    var searchInput = document.getElementById('searchInput');
+    var freshOnly = document.getElementById('freshOnly');
     var total = cards.length;
     var currentFilter = 'all';
     var currentLang = 'en';
 
     function applyFilter(filter) {
       currentFilter = filter;
+      var q = (searchInput.value || '').trim().toLowerCase();
+      var fresh = freshOnly.checked;
       var shown = 0;
       cards.forEach(function (card) {
-        var match = filter === 'all' || card.getAttribute('data-category') === filter;
+        var typeMatch = filter === 'all' || card.getAttribute('data-category') === filter;
+        var hay = '';
+        card.querySelectorAll('[data-en],[data-zh]').forEach(function (el) {
+          hay += ' ' + (el.getAttribute('data-en') || '') + ' ' + (el.getAttribute('data-zh') || '');
+        });
+        var searchMatch = !q || hay.toLowerCase().indexOf(q) !== -1;
+        var stale = !!card.querySelector('.stale');
+        var freshMatch = !fresh || !stale;
+        var match = typeMatch && searchMatch && freshMatch;
         card.classList.toggle('hidden', !match);
         if (match) shown++;
       });
@@ -710,6 +664,9 @@
       document.querySelectorAll('[data-zh-html]').forEach(function (el) {
         el.innerHTML = lang === 'zh' ? el.getAttribute('data-zh-html') : el.getAttribute('data-en-html');
       });
+      document.querySelectorAll('[data-zh-placeholder]').forEach(function (el) {
+        el.setAttribute('placeholder', lang === 'zh' ? el.getAttribute('data-zh-placeholder') : el.getAttribute('data-en-placeholder'));
+      });
       document.getElementById('langEn').setAttribute('aria-pressed', lang === 'en' ? 'true' : 'false');
       document.getElementById('langZh').setAttribute('aria-pressed', lang === 'zh' ? 'true' : 'false');
       applyFilter(currentFilter);
@@ -719,6 +676,59 @@
       btn.addEventListener('click', function () {
         applyFilter(btn.getAttribute('data-filter'));
       });
+    });
+    searchInput.addEventListener('input', function () { applyFilter(currentFilter); });
+    freshOnly.addEventListener('change', function () { applyFilter(currentFilter); });
+    // Phase 0 Supabase wiring. Fill in SUPABASE_URL and SUPABASE_ANON_KEY below
+    // with the publishable anon key only. Never put the service_role key in this file.
+    var SUPABASE_URL = 'https://tijjibfpmceytvmhfsar.supabase.co';
+    var SUPABASE_ANON_KEY = 'sb_publishable_Q1CCwDzkYiRVJGyNPqtVbQ_yChfeQIj';
+    var sb = (window.supabase && SUPABASE_URL.indexOf('PASTE_') !== 0)
+      ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+    function isZh() { return document.documentElement.lang === 'zh-CN'; }
+    function showConfirm(id, msgEn, msgZh) {
+      var el = document.getElementById(id);
+      el.textContent = isZh() ? msgZh : msgEn;
+      el.classList.remove('hidden');
+    }
+    document.getElementById('signupForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      var form = e.target;
+      var btn = form.querySelector('button[type="submit"]');
+      if (!sb) { showConfirm('signupConfirm', 'Thanks! This draft is not connected yet. Add your Supabase project URL and anon key, then publish.', '谢谢！此草稿尚未连接。请添加 Supabase 项目地址和 anon key 后再发布。'); return; }
+      btn.disabled = true;
+      var email = form.email.value.trim().toLowerCase();
+      var lang = isZh() ? 'zh' : 'en';
+      var res = await sb.from('alert_signups').insert({ email: email, language: lang, consent: true, source: 'cleaning-board' });
+      btn.disabled = false;
+      if (res.error && res.error.code === '23505') {
+        showConfirm('signupConfirm', 'You are already on the waitlist.', '你已经在等候名单上了。');
+      } else if (res.error) {
+        showConfirm('signupConfirm', 'Something went wrong. Please try again.', '出了点问题，请再试一次。');
+      } else {
+        form.reset();
+        showConfirm('signupConfirm', 'Thanks! You are on the waitlist. We will let you know when alerts launch.', '谢谢！你已加入等候名单。提醒功能上线时我们会通知你。');
+      }
+    });
+    document.getElementById('contactForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      var form = e.target;
+      var btn = form.querySelector('button[type="submit"]');
+      if (!sb) { showConfirm('contactConfirm', 'Thanks! This draft is not connected yet. Add your Supabase project URL and anon key, then publish.', '谢谢！此草稿尚未连接。请添加 Supabase 项目地址和 anon key 后再发布。'); return; }
+      btn.disabled = true;
+      var res = await sb.from('contact_messages').insert({
+        name: form.name.value.trim(),
+        business: form.business.value.trim() || null,
+        email: form.email.value.trim().toLowerCase(),
+        message: form.message.value.trim()
+      });
+      btn.disabled = false;
+      if (res.error) {
+        showConfirm('contactConfirm', 'Something went wrong. Please try again.', '出了点问题，请再试一次。');
+      } else {
+        form.reset();
+        showConfirm('contactConfirm', 'Thanks! Your message was sent. We will reply with next steps.', '谢谢！你的消息已发送。我们会回复下一步。');
+      }
     });
     document.getElementById('langEn').addEventListener('click', function () { setLang('en'); });
     document.getElementById('langZh').addEventListener('click', function () { setLang('zh'); });
