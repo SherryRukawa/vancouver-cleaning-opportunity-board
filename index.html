@@ -6,6 +6,15 @@
 <meta name="color-scheme" content="light dark" />
 <link rel="icon" href="data:," />
 <title>Vancouver Cleaning Opportunity Board</title>
+<meta name="description" content="Free board of cleaning opportunities for cleaning businesses in Vancouver and the Lower Mainland. Client requests, subcontracting work, and cleaning contracts for sale, newest first, each linked to the original post." />
+<link rel="canonical" href="https://vancouver-cleaning-opportunity-board.pages.dev/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Vancouver Cleaning Opportunity Board" />
+<meta property="og:description" content="Free cleaning opportunities for cleaning businesses in Vancouver and the Lower Mainland, newest first, each linked to the original post." />
+<meta property="og:url" content="https://vancouver-cleaning-opportunity-board.pages.dev/" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Vancouver Cleaning Opportunity Board" />
+<meta name="twitter:description" content="Free cleaning opportunities for cleaning businesses in Vancouver and the Lower Mainland, newest first, each linked to the original post." />
 <style>
   :root{
     /* finesse · product · sage · low spectacle · high density */
@@ -180,7 +189,106 @@
     .card:hover{border-color:var(--accent)}
     .filter-btn,.view-btn{transition:background .15s ease,border-color .15s ease}
   }
+
+  .faq{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:20px;box-shadow:var(--shadow);margin-top:16px}
+  .faq h2{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;font-size:1.35rem;line-height:1.25;font-weight:800;margin:0 0 8px}
+  .faq details{border-top:1px solid var(--border);padding:10px 0}
+  .faq details:first-of-type{border-top:0}
+  .faq summary{font-weight:700;cursor:pointer}
+  .faq p{margin:8px 0 0;color:var(--muted)}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "name": "Vancouver Cleaning Opportunity Board",
+      "url": "https://vancouver-cleaning-opportunity-board.pages.dev/",
+      "inLanguage": "en",
+      "about": "Cleaning opportunities for cleaning businesses in Vancouver and the Lower Mainland, British Columbia"
+    },
+    {
+      "@type": "WebPage",
+      "name": "Vancouver Cleaning Opportunity Board",
+      "url": "https://vancouver-cleaning-opportunity-board.pages.dev/",
+      "inLanguage": "en",
+      "description": "Free board of cleaning opportunities for cleaning businesses in Vancouver and the Lower Mainland. Client requests, subcontracting work, and cleaning contracts for sale, newest first, each linked to the original post.",
+      "areaServed": [
+        "Vancouver",
+        "Burnaby",
+        "Surrey",
+        "Richmond",
+        "North Vancouver",
+        "Tri-Cities",
+        "Lower Mainland",
+        "British Columbia"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the Vancouver Cleaning Opportunity Board?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is a free board that collects cleaning opportunities for cleaning businesses in Vancouver and the Lower Mainland, in one place, newest first."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who can use this board?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cleaning businesses, independent cleaners, and subcontractors looking for cleaning work in Vancouver and the Lower Mainland. It is not a job board for employees."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the board free to view?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, viewing the board is free. There is no account and no payment to browse the listings."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I apply for a cleaning opportunity?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Open the card and click View original post, then reply to the poster directly on the original Facebook, Craigslist, or Kijiji post. This board does not take applications, bookings, or payments."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What areas does the board cover?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Vancouver and the Lower Mainland in British Columbia, including Burnaby, Surrey, Richmond, North Vancouver, and the Tri-Cities."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How often is the board updated, and what does possibly stale mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Listings are sorted newest first and refreshed regularly. Posts over 2 weeks old are marked as possibly stale, which means they may have been filled, taken down, or changed, so open the original post to confirm it is still available."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When will email alerts launch?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Email alerts are coming soon. You can join the waitlist on this page, and you will be notified when alerts launch. No alert emails are sent yet."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <div class="wrap">
@@ -236,9 +344,9 @@
         <input type="email" class="form-input" name="email" required placeholder="Your email address" data-en-placeholder="Your email address" data-zh-placeholder="你的邮箱地址" aria-label="Email address" />
         <button type="submit" class="form-btn" data-en="Join the waitlist" data-zh="加入等候名单">Join the waitlist</button>
       </div>
-      <label class="consent"><input type="checkbox" name="consent" required /> <span data-en="Yes, let me know when new cleaning opportunity alerts launch. I understand I can unsubscribe anytime." data-zh="是的，提醒功能上线时请通知我。我了解自己可以随时退订。">Yes, send me new cleaning opportunity alerts. I understand I can unsubscribe anytime.</span></label>
+      <label class="consent"><input type="checkbox" name="consent" required /> <span data-en="Yes, let me know when new cleaning opportunity alerts launch. I understand I can unsubscribe anytime." data-zh="是的，提醒功能上线时请通知我。我了解自己可以随时退订。">Yes, let me know when new cleaning opportunity alerts launch. I understand I can unsubscribe anytime.</span></label>
       <p class="form-note" data-en="We will only use your email for these alerts. We will not share it or sell it." data-zh="你的邮箱仅用于这些提醒。我们不会分享或出售它。">We will only use your email for these alerts. We will not share it or sell it.</p>
-      <p class="form-confirm hidden" id="signupConfirm" data-en="Thanks! You are on the waitlist. We will let you know when alerts launch." data-zh="谢谢！你已加入等候名单。提醒功能上线时我们会通知你。">Thanks! This is a draft preview, no email was saved yet. Connect a form backend before publishing.</p>
+      <p class="form-confirm hidden" id="signupConfirm" data-en="Thanks! You are on the waitlist. We will let you know when alerts launch." data-zh="谢谢！你已加入等候名单。提醒功能上线时我们会通知你。">Thanks! You are on the waitlist. We will let you know when alerts launch.</p>
     </form>
   </section>
 
@@ -588,13 +696,12 @@
 
 
   <section class="contact" id="contact" aria-label="Help for cleaning businesses">
-    <h2 data-en="For cleaning businesses: want a website or AI help?" data-zh="面向清洁企业：想要网站或 AI 帮助吗？">For cleaning businesses: want a website or AI help?</h2>
-    <p data-en="If you want more customers, a simple website, online bookings, a Google Business Profile, or AI help with quotes, messages, and follow-ups, reach out. Tell us what you need and we will reply with next steps." data-zh="如果你想要更多客户、一个简单的网站、在线预订、Google 商家资料，或者用 AI 帮助处理报价、消息和跟进，请联系我们。告诉我们你的需求，我们会回复下一步。">If you want more customers, a simple website, online bookings, a Google Business Profile, or AI help with quotes, messages, and follow-ups, reach out. Tell us what you need and we will reply with next steps.</p>
+    <h2 data-en="For cleaning businesses: want a website, online bookings, or a Google Business Profile?" data-zh="面向清洁企业：想要网站、在线预订或 Google 商家资料吗？">For cleaning businesses: want a website, online bookings, or a Google Business Profile?</h2>
+    <p data-en="If you want more customers, a simple website, online bookings, or a Google Business Profile, reach out. Tell us what you need and we will reply with next steps." data-zh="如果你想要更多客户、一个简单的网站、在线预订或 Google 商家资料，请联系我们。告诉我们你的需求，我们会回复下一步。">If you want more customers, a simple website, online bookings, or a Google Business Profile, reach out. Tell us what you need and we will reply with next steps.</p>
     <div class="scope-row" aria-label="Services">
       <span class="scope" data-en="Website" data-zh="网站">Website</span>
       <span class="scope" data-en="Online bookings" data-zh="在线预订">Online bookings</span>
       <span class="scope" data-en="Google Business Profile" data-zh="Google 商家资料">Google Business Profile</span>
-      <span class="scope" data-en="AI help for your business" data-zh="企业 AI 帮助">AI help for your business</span>
     </div>
     <form class="contact-form" id="contactForm" action="#" method="post">
       <input type="text" class="form-input" name="name" required placeholder="Your name" data-en-placeholder="Your name" data-zh-placeholder="你的姓名" aria-label="Your name" />
@@ -602,8 +709,40 @@
       <input type="email" class="form-input" name="email" required placeholder="Your email address" data-en-placeholder="Your email address" data-zh-placeholder="你的邮箱地址" aria-label="Email address" />
       <textarea class="form-input" name="message" required placeholder="What do you need help with?" data-en-placeholder="What do you need help with?" data-zh-placeholder="你需要什么帮助？"></textarea>
       <div><button type="submit" class="form-btn" data-en="Send message" data-zh="发送消息">Send message</button></div>
-      <p class="form-confirm hidden" id="contactConfirm" data-en="Thanks! Your message was sent." data-zh="谢谢！你的消息已发送。">Thanks! This is a draft preview, no message was sent yet. Connect a form backend before publishing.</p>
+      <p class="form-confirm hidden" id="contactConfirm" data-en="Thanks! Your message was sent." data-zh="谢谢！你的消息已发送。">Thanks! Your message was sent. We will reply with next steps.</p>
     </form>
+  </section>
+
+  <section class="faq" id="faq" aria-label="Frequently asked questions">
+    <h2 data-en="Frequently asked questions" data-zh="常见问题">Frequently asked questions</h2>
+    <details>
+      <summary data-en="What is the Vancouver Cleaning Opportunity Board?" data-zh="温哥华清洁商机板是什么？">What is the Vancouver Cleaning Opportunity Board?</summary>
+      <p data-en="It is a free board that collects cleaning opportunities for cleaning businesses in Vancouver and the Lower Mainland, in one place, newest first." data-zh="这是一个免费公告板，集中展示温哥华及低陆平原面向清洁企业的商机，按最新发布排序。">It is a free board that collects cleaning opportunities for cleaning businesses in Vancouver and the Lower Mainland, in one place, newest first.</p>
+    </details>
+    <details>
+      <summary data-en="Who can use this board?" data-zh="谁可以使用这个公告板？">Who can use this board?</summary>
+      <p data-en="Cleaning businesses, independent cleaners, and subcontractors looking for cleaning work in Vancouver and the Lower Mainland. It is not a job board for employees." data-zh="在温哥华及低陆平原找清洁工作的清洁企业、独立清洁工和分包商可以使用。它不是面向雇员的招工板。">Cleaning businesses, independent cleaners, and subcontractors looking for cleaning work in Vancouver and the Lower Mainland. It is not a job board for employees.</p>
+    </details>
+    <details>
+      <summary data-en="Is the board free to view?" data-zh="查看公告板免费吗？">Is the board free to view?</summary>
+      <p data-en="Yes, viewing the board is free. There is no account and no payment to browse the listings." data-zh="是的，查看免费，无需注册，无需付费即可浏览信息。">Yes, viewing the board is free. There is no account and no payment to browse the listings.</p>
+    </details>
+    <details>
+      <summary data-en="How do I apply for a cleaning opportunity?" data-zh="如何申请清洁商机？">How do I apply for a cleaning opportunity?</summary>
+      <p data-en="Open the card and click View original post, then reply to the poster directly on the original Facebook, Craigslist, or Kijiji post. This board does not take applications, bookings, or payments." data-zh="打开卡片，点击查看原始帖子，然后直接在原始 Facebook、Craigslist 或 Kijiji 帖子中回复发帖人。本公告板不接受申请、预订或付款。">Open the card and click View original post, then reply to the poster directly on the original Facebook, Craigslist, or Kijiji post. This board does not take applications, bookings, or payments.</p>
+    </details>
+    <details>
+      <summary data-en="What areas does the board cover?" data-zh="公告板覆盖哪些地区？">What areas does the board cover?</summary>
+      <p data-en="Vancouver and the Lower Mainland in British Columbia, including Burnaby, Surrey, Richmond, North Vancouver, and the Tri-Cities." data-zh="不列颠哥伦比亚省的温哥华及低陆平原，包括本拿比、素里、列治文、北温哥华和三联市。">Vancouver and the Lower Mainland in British Columbia, including Burnaby, Surrey, Richmond, North Vancouver, and the Tri-Cities.</p>
+    </details>
+    <details>
+      <summary data-en="How often is the board updated, and what does possibly stale mean?" data-zh="公告板多久更新一次？可能已过期是什么意思？">How often is the board updated, and what does possibly stale mean?</summary>
+      <p data-en="Listings are sorted newest first and refreshed regularly. Posts over 2 weeks old are marked as possibly stale, which means they may have been filled, taken down, or changed, so open the original post to confirm it is still available." data-zh="信息按最新排序并定期更新。超过 2 周的帖子会标注为可能已过期，意思是可能已被接单、下架或更改，请先打开原始帖子确认是否仍然有效。">Listings are sorted newest first and refreshed regularly. Posts over 2 weeks old are marked as possibly stale, which means they may have been filled, taken down, or changed, so open the original post to confirm it is still available.</p>
+    </details>
+    <details>
+      <summary data-en="When will email alerts launch?" data-zh="邮件提醒什么时候推出？">When will email alerts launch?</summary>
+      <p data-en="Email alerts are coming soon. You can join the waitlist on this page, and you will be notified when alerts launch. No alert emails are sent yet." data-zh="邮件提醒功能即将推出。你可以在本页加入等候名单，功能上线时会通知你。目前还没有发送提醒邮件。">Email alerts are coming soon. You can join the waitlist on this page, and you will be notified when alerts launch. No alert emails are sent yet.</p>
+    </details>
   </section>
 
   <footer>
@@ -695,11 +834,18 @@
       e.preventDefault();
       var form = e.target;
       var btn = form.querySelector('button[type="submit"]');
-      if (!sb) { showConfirm('signupConfirm', 'Thanks! This draft is not connected yet. Add your Supabase project URL and anon key, then publish.', '谢谢！此草稿尚未连接。请添加 Supabase 项目地址和 anon key 后再发布。'); return; }
+      if (!sb) { showConfirm('signupConfirm', 'Sorry, the form is not connected right now. Please try again later.', '抱歉，表单目前未连接，请稍后再试。'); return; }
       btn.disabled = true;
-      var email = form.email.value.trim().toLowerCase();
+      var email = form.querySelector('[name="email"]').value.trim().toLowerCase();
       var lang = isZh() ? 'zh' : 'en';
-      var res = await sb.from('alert_signups').insert({ email: email, language: lang, consent: true, source: 'cleaning-board' });
+      var res;
+      try {
+        res = await sb.from('alert_signups').insert({ email: email, language: lang, consent: true, source: 'cleaning-board' });
+      } catch (err) {
+        btn.disabled = false;
+        showConfirm('signupConfirm', 'Something went wrong. Please try again.', '出了点问题，请再试一次.');
+        return;
+      }
       btn.disabled = false;
       if (res.error && res.error.code === '23505') {
         showConfirm('signupConfirm', 'You are already on the waitlist.', '你已经在等候名单上了。');
@@ -714,14 +860,21 @@
       e.preventDefault();
       var form = e.target;
       var btn = form.querySelector('button[type="submit"]');
-      if (!sb) { showConfirm('contactConfirm', 'Thanks! This draft is not connected yet. Add your Supabase project URL and anon key, then publish.', '谢谢！此草稿尚未连接。请添加 Supabase 项目地址和 anon key 后再发布。'); return; }
+      if (!sb) { showConfirm('contactConfirm', 'Sorry, the form is not connected right now. Please try again later.', '抱歉，表单目前未连接，请稍后再试。'); return; }
       btn.disabled = true;
-      var res = await sb.from('contact_messages').insert({
-        name: form.name.value.trim(),
-        business: form.business.value.trim() || null,
-        email: form.email.value.trim().toLowerCase(),
-        message: form.message.value.trim()
-      });
+      var res;
+      try {
+        res = await sb.from('contact_messages').insert({
+          name: form.querySelector('[name="name"]').value.trim(),
+          business: form.querySelector('[name="business"]').value.trim() || null,
+          email: form.querySelector('[name="email"]').value.trim().toLowerCase(),
+          message: form.querySelector('[name="message"]').value.trim()
+        });
+      } catch (err) {
+        btn.disabled = false;
+        showConfirm('contactConfirm', 'Something went wrong. Please try again.', '出了点问题，请再试一次。');
+        return;
+      }
       btn.disabled = false;
       if (res.error) {
         showConfirm('contactConfirm', 'Something went wrong. Please try again.', '出了点问题，请再试一次。');
